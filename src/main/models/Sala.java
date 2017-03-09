@@ -31,5 +31,9 @@ public class Sala {
 	public void setIdBloco(Integer idBloco) {
 		this.idBloco = idBloco;
 	}
+	
+	public String toString(){
+		return "ID: "+this.id+" | Nome: "+this.nome+" | Numero: "+this.numero;
+	}
 
 }

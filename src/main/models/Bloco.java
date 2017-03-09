@@ -7,22 +7,26 @@ public class Bloco {
 	private String numero;
 	
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {
-		return nome;
+		return this.nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 	public String getNumero() {
-		return numero;
+		return this.numero;
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	
+	public String toString(){
+		return "ID: "+this.id+" | Nome: "+this.nome+" | Numero: "+this.numero;
 	}
 
 }

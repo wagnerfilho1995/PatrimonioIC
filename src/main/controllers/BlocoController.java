@@ -30,7 +30,7 @@ public class BlocoController implements Controller {
 
 	@Override
 	public void listar() {
-		for(int i = 0; i < blocos.size(); i++){
+		for(int i : blocos.keySet()){
 			System.out.println(blocos.get(i).toString());
 		}
 	}

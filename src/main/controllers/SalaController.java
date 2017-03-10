@@ -3,6 +3,7 @@ package main.controllers;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import main.Main;
 import main.models.Sala;
 
 public class SalaController implements Controller {
@@ -14,9 +15,13 @@ public class SalaController implements Controller {
 	@Override
 	public void adicionar() {
 		Sala newSala = new Sala();
+		Main.blocoController.listar();
+		System.out.print("ID do Bloco: ");
+		newSala.setIdBloco(scan.nextInt());
 		newSala.setId(proximoId);
 		proximoId++;
 		System.out.println("Nome: ");
+		scan.nextLine();
 		newSala.setNome(scan.nextLine());
 		System.out.println("Numero: ");
 		newSala.setNumero(scan.nextLine());
@@ -36,9 +41,11 @@ public class SalaController implements Controller {
 	}
 	
 	public void listarPorBloco(Integer idBloco){
+		System.out.println("Salas: ");
 		for(int i = 0; i < salas.size(); i++){
-			if(salas.get(i).getIdBloco() == idBloco) System.out.println(salas.get(i).toString());
+			if(salas.get(i).getIdBloco() == idBloco) System.out.println("  "+salas.get(i).toString());
 		}
+		System.out.println("");
 	}
 
 	@Override

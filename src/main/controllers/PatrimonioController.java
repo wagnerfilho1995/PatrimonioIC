@@ -45,7 +45,7 @@ public class PatrimonioController implements Controller {
 
 	@Override
 	public void remover(Integer id) {
-		
+		patrimonios.remove(id);
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class PatrimonioController implements Controller {
 	}
 	
 	public void listarPorSala(Integer idSala){
-		for(int i = 0; i < patrimonios.size(); i++){
+		for(int i : patrimonios.keySet()){
 			if(patrimonios.get(i).getUltimaMovimentacao().getIdSala() == idSala)System.out.println(patrimonios.get(i).toString());
 		}
 	}

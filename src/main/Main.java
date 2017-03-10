@@ -1,16 +1,17 @@
 package main;
 
-import java.util.Calendar;
 import java.util.Scanner;
 
 import main.controllers.BlocoController;
+import main.controllers.PatrimonioController;
 import main.controllers.SalaController;
 
 public class Main {
 
 	static Scanner scan = new Scanner(System.in);
-	static SalaController salaController = new SalaController();
-	static BlocoController blocoController = new BlocoController();
+	public static PatrimonioController patrimonioController = new PatrimonioController();
+	public static SalaController salaController = new SalaController();
+	public static BlocoController blocoController = new BlocoController();
 	
 	public static void main(String[] args) {
 		int menuOption = 0;
@@ -64,7 +65,9 @@ public class Main {
 		else{
 			blocoController.listar();
 			System.out.print("ID do Bloco: ");
-			salaController.buscar(scan.nextInt());
+			int idBloco = scan.nextInt();
+			System.out.println("Bloco: "+blocoController.buscar(idBloco).toString()+"\n");
+			salaController.listarPorBloco(idBloco);
 		}
 	}
 	

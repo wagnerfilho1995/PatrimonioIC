@@ -1,12 +1,18 @@
 package main.models;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Patrimonio {
 
 	private Integer id;
 	private String nome;
 	private String numero;
-	private Double valor;
-	private Integer idMovimentacao;
+	private Movimentacao ultimaMovimentacao;
+	private Integer status; // 1 - Padrão, 2 - Danificado / Inutilizável, 3 - Em manutenção
+	private Calendar manutencao;
+	private Integer frequenciaDeManutencao; // Em dias
+	
 	
 	public Integer getId() {
 		return id;
@@ -26,17 +32,35 @@ public class Patrimonio {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public Double getValor() {
-		return valor;
+	public Movimentacao getUltimaMovimentacao() {
+		return ultimaMovimentacao;
 	}
-	public void setValor(Double valor) {
-		this.valor = valor;
+	public void setUltimaMovimentacao(Movimentacao ultimaMovimentacao) {
+		this.ultimaMovimentacao = ultimaMovimentacao;
 	}
-	public Integer getIdMovimentacao() {
-		return idMovimentacao;
+	public Integer getStatus() {
+		return status;
 	}
-	public void setIdMovimentacao(Integer idMovimentacao) {
-		this.idMovimentacao = idMovimentacao;
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+	public Calendar getManutencao(){
+		return manutencao;
+	}
+	public void setManutecao(){
+		this.manutencao.add(Calendar.DATE, frequenciaDeManutencao);
+	}
+	public void setManutencao(Date manutencao){
+		this.manutencao.setTime(manutencao);
+	}
+	public Integer getFrequenciaDeManutencao() {
+		return frequenciaDeManutencao;
+	}
+	public void setFrequenciaDeManutencao(Integer frequenciaDeManutencao) {
+		this.frequenciaDeManutencao = frequenciaDeManutencao;
+	}
+	public String toString(){
+		return "ID: "+this.id+" | Nome: "+this.nome+" | Numero: "+this.numero;
 	}
 	
 }

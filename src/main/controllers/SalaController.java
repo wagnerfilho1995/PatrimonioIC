@@ -1,15 +1,14 @@
 package main.controllers;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import main.models.Sala;
 
 public class SalaController implements Controller {
 	
 	Scanner scan = new Scanner(System.in);
-	ObservableList<Sala> salas = FXCollections.observableArrayList();	
+	HashMap<Integer, Sala> salas = new HashMap<Integer, Sala>();	
 	int proximoId = 0;
 	
 	@Override
@@ -21,7 +20,7 @@ public class SalaController implements Controller {
 		newSala.setNome(scan.nextLine());
 		System.out.println("Numero: ");
 		newSala.setNumero(scan.nextLine());
-		salas.add(newSala);
+		salas.put(newSala.getId(), newSala);
 	}
 
 	@Override
@@ -45,10 +44,6 @@ public class SalaController implements Controller {
 	@Override
 	public Object buscar(Integer id) {
 		return salas.get(id);
-	}
-	
-	public ObservableList<Sala> getList(){
-		return salas;
 	}
 
 }

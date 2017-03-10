@@ -1,15 +1,14 @@
 package main.controllers;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import main.models.Bloco;
 
 public class BlocoController implements Controller {
 	
 	Scanner scan = new Scanner(System.in);
-	ObservableList<Bloco> blocos = FXCollections.observableArrayList();
+	HashMap<Integer, Bloco> blocos = new HashMap<Integer, Bloco>();
 	int proximoId = 0;
 
 	@Override
@@ -21,7 +20,7 @@ public class BlocoController implements Controller {
 		newBloco.setNome(scan.nextLine());
 		System.out.println("Numero: ");
 		newBloco.setNumero(scan.nextLine());
-		blocos.add(newBloco);
+		blocos.put(newBloco.getId(), newBloco);
 	}
 
 	@Override
@@ -39,10 +38,6 @@ public class BlocoController implements Controller {
 	@Override
 	public Object buscar(Integer id) {
 		return blocos.get(id);
-	}
-	
-	public ObservableList<Bloco> getList(){
-		return blocos;
 	}
 
 }

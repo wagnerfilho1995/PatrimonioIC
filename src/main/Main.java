@@ -53,29 +53,30 @@ public class Main {
 	
 		int answer = scan.nextInt();
 		int busca;
-		switch(answer){
-			case 1:
+		if(answer == 1){
 				patrimonioController.adicionar();
-				break;
-			case 2:
+			}
+		else if(answer == 2){
 				patrimonioController.listar();
-				break;
-			case 3:
+				System.out.print("ID do Patrimonio: ");
+				patrimonioController.remover(scan.nextInt());
+		}
+		else if(answer == 3){
 				System.out.println("Forma de buscar:");
 				System.out.println("1 - ID");
 				System.out.println("2 - Sala");
 					busca = scan.nextInt();
 					if(busca == 1){
-						System.out.println("ID do patrimonio:");
+						System.out.println("ID do Patrimonio:");
 						patrimonioController.buscar(scan.nextInt()).toString();
 					}
 					else if(busca == 2){
 						salaController.listar();
-						System.out.println("ID da sala:");
+						System.out.println("ID da Sala:");
 						salaController.buscar(scan.nextInt()).toString();					
 					}
-				break;
-			case 4:
+			}	
+		else if(answer == 4){
 				System.out.println("Forma de Listagem:");
 				System.out.println("1 - Salas");
 				System.out.println("2 - Todos");
@@ -87,7 +88,7 @@ public class Main {
 					else if(busca == 2){
 						patrimonioController.listar();
 					}
-		}
+			}
 	}
 	
 	public static void menuSala(){

@@ -23,7 +23,6 @@ public class MovimentacaoController {
 
 	public void remover(Integer id) {
 		movimentacoes.remove(id);
-
 	}
 
 	public void listar() {

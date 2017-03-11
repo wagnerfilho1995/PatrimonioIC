@@ -3,6 +3,7 @@ package main.controllers;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import main.Main;
 import main.models.Movimentacao;
 
 public class MovimentacaoController {
@@ -29,12 +30,14 @@ public class MovimentacaoController {
 		for(int i = 0; i < movimentacoes.size(); i++){
 			System.out.println(movimentacoes.get(i).toString());
 		}
-
+	}
+	
+	public void listarPorPatrimonio() {
+		
 	}
 
 	public Object buscar(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return movimentacoes.get(id);
 	}
 
 }

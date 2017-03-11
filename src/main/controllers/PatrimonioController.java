@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import main.Main;
+import main.models.Movimentacao;
 import main.models.Patrimonio;
 
 public class PatrimonioController implements Controller {
@@ -15,18 +17,36 @@ public class PatrimonioController implements Controller {
 
 	@Override
 	public void adicionar() {
+		
 		Patrimonio newPatrimonio = new Patrimonio();
+		Movimentacao newMovimentacao = new Movimentacao();
+		
 		newPatrimonio.setId(proximoId);
+		newMovimentacao.setId(Main.movimentacaoController.proximoId);
+		newMovimentacao.setIdPatrimonio(proximoId);
+		Main.movimentacaoController.proximoId++;
 		proximoId++;
+		Main.blocoController.listar();
+		
+		System.out.println("ID Bloco para alocação:");
+		Main.salaController.listarPorBloco(scan.nextInt());
+		
+		System.out.println("ID Sala para alocação:");
+		newMovimentacao.setIdSala(scan.nextInt());
+		
 		System.out.println("Nome: ");
 		newPatrimonio.setNome(scan.nextLine());
+		
 		System.out.println("Numero: ");
 		newPatrimonio.setNumero(scan.nextLine());
+		
 		newPatrimonio.setStatus(1);
+		
 		System.out.println("Tipo de Manutencao: ");
 		System.out.println("1 - Periodica");
 		System.out.println("2 - Pontual");
 		int answer = scan.nextInt();
+		
 		if(answer == 1){
 			System.out.println("Frequencia(Em dias): ");
 			newPatrimonio.setFrequenciaDeManutencao(scan.nextInt());
@@ -40,6 +60,7 @@ public class PatrimonioController implements Controller {
 				e.printStackTrace();
 			}
 		}
+		
 		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
 	}
 
@@ -54,10 +75,12 @@ public class PatrimonioController implements Controller {
 			System.out.println(patrimonios.get(i).toString());
 		}
 	}
-	
+ 	
 	public void listarPorSala(Integer idSala){
 		for(int i : patrimonios.keySet()){
-			if(patrimonios.get(i).getUltimaMovimentacao().getIdSala() == idSala)System.out.println(patrimonios.get(i).toString());
+			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()) == idSala){
+				System.out.println(patrimonios.get(i).toString());
+			}
 		}
 	}
 

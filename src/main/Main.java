@@ -3,6 +3,7 @@ package main;
 import java.util.Scanner;
 
 import main.controllers.BlocoController;
+import main.controllers.MovimentacaoController;
 import main.controllers.PatrimonioController;
 import main.controllers.SalaController;
 
@@ -12,6 +13,7 @@ public class Main {
 	public static PatrimonioController patrimonioController = new PatrimonioController();
 	public static SalaController salaController = new SalaController();
 	public static BlocoController blocoController = new BlocoController();
+	public static MovimentacaoController movimentacaoController = new MovimentacaoController();
 	
 	public static void main(String[] args) {
 		int menuOption = 0;
@@ -30,7 +32,7 @@ public class Main {
 		System.out.println("4 - Sair");
 		int menuOption = scan.nextInt();
 		if(menuOption == 1){
-			
+			menuPatrimonio();
 		}
 		else if(menuOption == 2){
 			menuSala();
@@ -41,7 +43,55 @@ public class Main {
 		return menuOption;
 	}
 	
+	public static void menuPatrimonio(){
+		
+		System.out.println("Menu Patrimonio");
+		System.out.println("1 - Adicionar");
+		System.out.println("2 - Remover");
+		System.out.println("3 - Buscar");
+		System.out.println("4 - Listar");
+	
+		int answer = scan.nextInt();
+		int busca;
+		switch(answer){
+			case 1:
+				patrimonioController.adicionar();
+				break;
+			case 2:
+				patrimonioController.listar();
+				break;
+			case 3:
+				System.out.println("Forma de buscar:");
+				System.out.println("1 - ID");
+				System.out.println("2 - Sala");
+					busca = scan.nextInt();
+					if(busca == 1){
+						System.out.println("ID do patrimonio:");
+						patrimonioController.buscar(scan.nextInt()).toString();
+					}
+					else if(busca == 2){
+						salaController.listar();
+						System.out.println("ID da sala:");
+						salaController.buscar(scan.nextInt()).toString();					
+					}
+				break;
+			case 4:
+				System.out.println("Forma de Listagem:");
+				System.out.println("1 - Salas");
+				System.out.println("2 - Todos");
+					busca = scan.nextInt();
+					if(busca == 1){
+						// rodar sala por sala, cada sala listar todos os patrimonios que tem nela
+						salaController.listar();
+					}
+					else if(busca == 2){
+						patrimonioController.listar();
+					}
+		}
+	}
+	
 	public static void menuSala(){
+		
 		System.out.println("Menu Salas");
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
@@ -72,6 +122,7 @@ public class Main {
 	}
 	
 	public static void menuBloco(){
+		
 		System.out.println("Menu Blocos");
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");

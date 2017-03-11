@@ -8,11 +8,10 @@ public class Patrimonio {
 	private Integer id;
 	private String nome;
 	private String numero;
-	private Movimentacao ultimaMovimentacao;
+	private Integer idMovimentacao;
 	private Integer status; // 1 - Padrão, 2 - Danificado / Inutilizável, 3 - Em manutenção
 	private Calendar manutencao;
 	private Integer frequenciaDeManutencao; // Em dias
-	
 	
 	public Integer getId() {
 		return id;
@@ -32,11 +31,11 @@ public class Patrimonio {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public Movimentacao getUltimaMovimentacao() {
-		return ultimaMovimentacao;
+	public Integer getIdMovimentacao() {
+		return idMovimentacao;
 	}
-	public void setUltimaMovimentacao(Movimentacao ultimaMovimentacao) {
-		this.ultimaMovimentacao = ultimaMovimentacao;
+	public void setIdMovimentacao(Integer idMovimentacao) {
+		this.idMovimentacao = idMovimentacao;
 	}
 	public Integer getStatus() {
 		return status;

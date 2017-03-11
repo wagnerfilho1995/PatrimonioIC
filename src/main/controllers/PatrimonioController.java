@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import main.Main;
-import main.models.Movimentacao;
 import main.models.Patrimonio;
 
 public class PatrimonioController implements Controller {
@@ -15,21 +14,16 @@ public class PatrimonioController implements Controller {
 	HashMap<Integer, Patrimonio> patrimonios = new HashMap<Integer, Patrimonio>();	
 	int proximoId = 0;
 	
-	@Override
 	public void dadosIniciais(){
 
 		Patrimonio newPatrimonio = new Patrimonio();
-		Movimentacao newMovimentacao = new Movimentacao();
 		
 		newPatrimonio.setId(proximoId);
-		newMovimentacao.setId(Main.movimentacaoController.proximoId);
-		newMovimentacao.setIdPatrimonio(proximoId);
-		Main.movimentacaoController.proximoId++;
 		proximoId++;
 		
-		Main.salaController.listarPorBloco(1); // IC
+		//Main.salaController.listarPorBloco(1); // IC
 		
-		newMovimentacao.setIdSala(3); // LAB3
+		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 3)); // LAB3
 		
 		newPatrimonio.setNome("PC1");
 		
@@ -45,11 +39,8 @@ public class PatrimonioController implements Controller {
 	public void adicionar() {
 		
 		Patrimonio newPatrimonio = new Patrimonio();
-		Movimentacao newMovimentacao = new Movimentacao();
 		
 		newPatrimonio.setId(proximoId);
-		newMovimentacao.setId(Main.movimentacaoController.proximoId);
-		newMovimentacao.setIdPatrimonio(proximoId);
 		Main.movimentacaoController.proximoId++;
 		proximoId++;
 		Main.blocoController.listar();
@@ -58,9 +49,10 @@ public class PatrimonioController implements Controller {
 		Main.salaController.listarPorBloco(scan.nextInt());
 		
 		System.out.println("ID Sala para alocação:");
-		newMovimentacao.setIdSala(scan.nextInt());
+		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), scan.nextInt()));
 		
 		System.out.println("Nome: ");
+		scan.nextLine();
 		newPatrimonio.setNome(scan.nextLine());
 		
 		System.out.println("Numero: ");
@@ -86,6 +78,7 @@ public class PatrimonioController implements Controller {
 				e.printStackTrace();
 			}
 		}
+		
 		
 		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
 	}

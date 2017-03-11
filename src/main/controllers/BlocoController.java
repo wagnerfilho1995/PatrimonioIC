@@ -11,7 +11,6 @@ public class BlocoController implements Controller {
 	HashMap<Integer, Bloco> blocos = new HashMap<Integer, Bloco>();
 	int proximoId = 0;
 
-	@Override
 	public void dadosIniciais(){
 		
 		Bloco newBloco1 = new Bloco();

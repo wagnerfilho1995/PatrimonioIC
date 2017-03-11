@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import main.Main;
-import main.models.Bloco;
 import main.models.Sala;
 
 public class SalaController implements Controller {
@@ -13,11 +12,10 @@ public class SalaController implements Controller {
 	HashMap<Integer, Sala> salas = new HashMap<Integer, Sala>();	
 	int proximoId = 0;
 	
-	@Override
 	public void dadosIniciais(){
 		
 		Sala newSala1 = new Sala();
-		Main.blocoController.listar();
+		//Main.blocoController.listar();
 		newSala1.setIdBloco(1);
 		newSala1.setId(proximoId);
 		proximoId++;
@@ -26,7 +24,7 @@ public class SalaController implements Controller {
 		salas.put(newSala1.getId(), newSala1);
 	
 		Sala newSala2 = new Sala();
-		Main.blocoController.listar();
+		//Main.blocoController.listar();
 		newSala2.setIdBloco(1);
 		newSala2.setId(proximoId);
 		proximoId++;
@@ -35,7 +33,7 @@ public class SalaController implements Controller {
 		salas.put(newSala2.getId(), newSala2);
 	
 		Sala newSala3 = new Sala();
-		Main.blocoController.listar();
+		//Main.blocoController.listar();
 		newSala3.setIdBloco(1);
 		newSala3.setId(proximoId);
 		proximoId++;
@@ -52,13 +50,17 @@ public class SalaController implements Controller {
 		Main.blocoController.listar();
 		System.out.print("ID do Bloco: ");
 		newSala.setIdBloco(scan.nextInt());
+		
 		newSala.setId(proximoId);
 		proximoId++;
+		
 		System.out.println("Nome: ");
 		scan.nextLine();
 		newSala.setNome(scan.nextLine());
+		
 		System.out.println("Numero: ");
 		newSala.setNumero(scan.nextLine());
+		
 		salas.put(newSala.getId(), newSala);
 	}
 

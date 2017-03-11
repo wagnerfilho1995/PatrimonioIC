@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import main.Main;
+import main.models.Bloco;
 import main.models.Sala;
 
 public class SalaController implements Controller {
@@ -11,6 +12,39 @@ public class SalaController implements Controller {
 	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Sala> salas = new HashMap<Integer, Sala>();	
 	int proximoId = 0;
+	
+	@Override
+	public void dadosIniciais(){
+		
+		Sala newSala1 = new Sala();
+		Main.blocoController.listar();
+		newSala1.setIdBloco(1);
+		newSala1.setId(proximoId);
+		proximoId++;
+		newSala1.setNome("Sala 01");
+		newSala1.setNumero("1");
+		salas.put(newSala1.getId(), newSala1);
+	
+		Sala newSala2 = new Sala();
+		Main.blocoController.listar();
+		newSala2.setIdBloco(1);
+		newSala2.setId(proximoId);
+		proximoId++;
+		newSala2.setNome("Sala 02");
+		newSala2.setNumero("2");
+		salas.put(newSala2.getId(), newSala2);
+	
+		Sala newSala3 = new Sala();
+		Main.blocoController.listar();
+		newSala3.setIdBloco(1);
+		newSala3.setId(proximoId);
+		proximoId++;
+		newSala3.setNome("LAB 03");
+		newSala3.setNumero("103");
+		salas.put(newSala3.getId(), newSala3);
+		
+	}
+	
 	
 	@Override
 	public void adicionar() {

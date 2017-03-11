@@ -16,7 +16,12 @@ public class Main {
 	public static MovimentacaoController movimentacaoController = new MovimentacaoController();
 	
 	public static void main(String[] args) {
+		
 		int menuOption = 0;
+		
+		patrimonioController.dadosIniciais();
+		salaController.dadosIniciais();
+		blocoController.dadosIniciais();
 		
 		while(menuOption != 4){
 			menuOption = mainMenu();
@@ -62,10 +67,13 @@ public class Main {
 				patrimonioController.remover(scan.nextInt());
 		}
 		else if(answer == 3){
+			
 				System.out.println("Forma de buscar:");
 				System.out.println("1 - ID");
 				System.out.println("2 - Sala");
+				
 					busca = scan.nextInt();
+					scan.nextLine();
 					if(busca == 1){
 						System.out.println("ID do Patrimonio:");
 						patrimonioController.buscar(scan.nextInt()).toString();

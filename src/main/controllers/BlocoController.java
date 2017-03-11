@@ -12,6 +12,32 @@ public class BlocoController implements Controller {
 	int proximoId = 0;
 
 	@Override
+	public void dadosIniciais(){
+		
+		Bloco newBloco1 = new Bloco();
+		newBloco1.setId(proximoId);
+		proximoId++;
+		newBloco1.setNome("Antigo IM");
+		newBloco1.setNumero("14");
+		blocos.put(newBloco1.getId(), newBloco1);
+	
+		Bloco newBloco2 = new Bloco();
+		newBloco2.setId(proximoId);
+		proximoId++;
+		newBloco2.setNome("IC");
+		newBloco2.setNumero("17");
+		blocos.put(newBloco2.getId(), newBloco2);
+	
+		Bloco newBloco3 = new Bloco();
+		newBloco3.setId(proximoId);
+		proximoId++;
+		newBloco3.setNome("CPTEC");
+		newBloco3.setNumero("18");
+		blocos.put(newBloco3.getId(), newBloco3);
+	
+	}
+	
+	@Override
 	public void adicionar() {
 		Bloco newBloco = new Bloco();
 		newBloco.setId(proximoId);

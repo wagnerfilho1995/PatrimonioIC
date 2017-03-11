@@ -14,7 +14,33 @@ public class PatrimonioController implements Controller {
 	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Patrimonio> patrimonios = new HashMap<Integer, Patrimonio>();	
 	int proximoId = 0;
+	
+	@Override
+	public void dadosIniciais(){
 
+		Patrimonio newPatrimonio = new Patrimonio();
+		Movimentacao newMovimentacao = new Movimentacao();
+		
+		newPatrimonio.setId(proximoId);
+		newMovimentacao.setId(Main.movimentacaoController.proximoId);
+		newMovimentacao.setIdPatrimonio(proximoId);
+		Main.movimentacaoController.proximoId++;
+		proximoId++;
+		
+		Main.salaController.listarPorBloco(1); // IC
+		
+		newMovimentacao.setIdSala(3); // LAB3
+		
+		newPatrimonio.setNome("PC1");
+		
+		newPatrimonio.setNumero("1111");
+		
+		newPatrimonio.setStatus(1);
+		
+		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
+
+	}
+	
 	@Override
 	public void adicionar() {
 		

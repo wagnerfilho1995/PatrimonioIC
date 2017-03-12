@@ -3,6 +3,7 @@ package main.controllers;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import main.Main;
 import main.models.Movimentacao;
 
 public class MovimentacaoController implements Controller {
@@ -13,7 +14,30 @@ public class MovimentacaoController implements Controller {
 	
 	@Override
 	public void adicionar(){
+		Main.blocoController.listar();
+		System.out.println("Bloco atual do patrimonio: ");
 		
+		Main.salaController.listarPorBloco(scan.nextInt());
+		System.out.println("Sala atual do patrimonio: ");
+		
+		Main.patrimonioController.listarPorSala(scan.nextInt());
+		System.out.println("Patrimonio: ");
+		
+		Movimentacao newMovimentacao = new Movimentacao();
+		newMovimentacao.setId(proximoId);
+		proximoId++;
+		
+		newMovimentacao.setIdPatrimonio(scan.nextInt());
+		
+		Main.blocoController.listar();
+		System.out.println("Novo bloco do patrimonio: ");
+		
+		Main.salaController.listarPorBloco(scan.nextInt());
+		System.out.println("Nova sala do patrimonio: ");
+		newMovimentacao.setIdSala(scan.nextInt());
+		
+		newMovimentacao.setData();
+		movimentacoes.put(newMovimentacao.getId(), newMovimentacao);
 	}
 	
 	public int adicionar(Integer idPatrimonio, Integer idSala) {
@@ -22,6 +46,7 @@ public class MovimentacaoController implements Controller {
 		proximoId++;
 		newMovimentacao.setIdPatrimonio(idPatrimonio);
 		newMovimentacao.setIdSala(idSala);
+		newMovimentacao.setData();
 		movimentacoes.put(newMovimentacao.getId(), newMovimentacao);
 		return newMovimentacao.getId();
 	}
@@ -39,9 +64,13 @@ public class MovimentacaoController implements Controller {
 	public void listarPorPatrimonio() {
 		
 	}
+	public Movimentacao buscar(Integer id){
+		return buscar(Movimentacao.class, id);
+	}
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object buscar(Integer id) {
-		return movimentacoes.get(id);
+	public <T extends Object>T buscar(Class<T> type, Integer id) {
+		return (T) movimentacoes.get(id);
 	}
 
 }

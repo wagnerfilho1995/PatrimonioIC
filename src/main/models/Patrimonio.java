@@ -50,6 +50,7 @@ public class Patrimonio {
 		this.manutencao.add(Calendar.DATE, frequenciaDeManutencao);
 	}
 	public void setManutencao(Date manutencao){
+		this.manutencao = Calendar.getInstance();
 		this.manutencao.setTime(manutencao);
 	}
 	public Integer getFrequenciaDeManutencao() {

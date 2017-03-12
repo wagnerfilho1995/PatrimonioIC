@@ -59,10 +59,14 @@ public class BlocoController implements Controller {
 			System.out.println(blocos.get(i).toString());
 		}
 	}
-
+	public Bloco buscar(Integer id){
+		return buscar(Bloco.class, id);
+	}
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object buscar(Integer id) {
-		return blocos.get(id);
+	public <T extends Object>T buscar(Class<T> type, Integer id) {
+		
+		return (T) blocos.get(id);
 	}
 
 }

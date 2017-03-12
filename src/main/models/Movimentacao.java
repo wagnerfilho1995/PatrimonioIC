@@ -1,6 +1,7 @@
 package main.models;
 
 import java.util.Calendar;
+import java.util.Date;
 //a decidir qual biblioteca de data vai ser usada
 public class Movimentacao {
 	
@@ -30,8 +31,15 @@ public class Movimentacao {
 	public Calendar getData() {
 		return data;
 	}
-	public void setData(Calendar data) {
-		this.data = data;
+	public void setData() {
+		setData(null);
+	}
+	public void setData(Date data) {
+		this.data = Calendar.getInstance();
+		if(data != null) this.data.setTime(data);
+	}
+	public String toString(){
+		return "ID: "+this.id+" | ID-Patrimonio: "+this.idPatrimonio+" | ID-Sala: "+this.idSala;
 	}
 
 }

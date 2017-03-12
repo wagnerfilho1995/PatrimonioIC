@@ -19,10 +19,10 @@ public class Main {
 		
 		int menuOption = 0;
 		
-		patrimonioController.dadosIniciais();
-		salaController.dadosIniciais();
 		blocoController.dadosIniciais();
-		
+		salaController.dadosIniciais();
+		patrimonioController.dadosIniciais();
+				
 		while(menuOption != 4){
 			menuOption = mainMenu();
 		}
@@ -91,7 +91,7 @@ public class Main {
 					busca = scan.nextInt();
 					if(busca == 1){
 						// rodar sala por sala, cada sala listar todos os patrimonios que tem nela
-						salaController.listar();
+						patrimonioController.listarTodosPorSala();
 					}
 					else if(busca == 2){
 						patrimonioController.listar();

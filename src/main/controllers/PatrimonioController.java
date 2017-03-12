@@ -23,7 +23,7 @@ public class PatrimonioController implements Controller {
 		
 		//Main.salaController.listarPorBloco(1); // IC
 		
-		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 3)); // LAB3
+		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 2)); // LAB3
 		
 		newPatrimonio.setNome("PC1");
 		
@@ -68,9 +68,10 @@ public class PatrimonioController implements Controller {
 		if(answer == 1){
 			System.out.println("Frequencia(Em dias): ");
 			newPatrimonio.setFrequenciaDeManutencao(scan.nextInt());
+			scan.nextLine();
 			System.out.println("Data da proxima manutenção(dd/MM/aaaa): ");
 			String m = scan.nextLine();
-			SimpleDateFormat sm = new SimpleDateFormat("dd-mm-yyyy");
+			SimpleDateFormat sm = new SimpleDateFormat("dd/MM/yyyy");
 			try {
 				newPatrimonio.setManutencao(sm.parse(m));
 			} catch (ParseException e) {
@@ -96,16 +97,29 @@ public class PatrimonioController implements Controller {
 	}
  	
 	public void listarPorSala(Integer idSala){
+		System.out.println("Patrimonios: ");
 		for(int i : patrimonios.keySet()){
-			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()) == idSala){
-				System.out.println(patrimonios.get(i).toString());
+			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()).getIdSala() == idSala){
+				System.out.println("  "+patrimonios.get(i).toString());
 			}
 		}
+		System.out.println("");
 	}
-
+	
+	public void listarTodosPorSala(){
+		for(int i : Main.salaController.salas.keySet()){
+			System.out.println("Sala: "+Main.salaController.buscar(i).toString());
+			System.out.print("  ");
+			listarPorSala(i);
+		}
+	}
+	public Patrimonio buscar(Integer id){
+		return buscar(Patrimonio.class, id);
+	}
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object buscar(Integer id) {
-		return patrimonios.get(id);
+	public <T extends Object>T buscar(Class<T> type, Integer id) {
+		return (T) patrimonios.get(id);
 	}
 
 }

@@ -8,6 +8,6 @@ public interface Controller {
 	
 	public void listar();
 	
-	public Object buscar(Integer id);
+	public <T extends Object>T buscar(Class<T> type, Integer id);
 
 }

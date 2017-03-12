@@ -83,10 +83,14 @@ public class SalaController implements Controller {
 		}
 		System.out.println("");
 	}
-
+	
+	public Sala buscar(Integer id){
+		return buscar(Sala.class, id);
+	}
+	@SuppressWarnings("unchecked")
 	@Override
-	public Object buscar(Integer id) {
-		return salas.get(id);
+	public <T extends Object>T buscar(Class<T> type, Integer id) {
+		return (T) salas.get(id);
 	}
 
 }

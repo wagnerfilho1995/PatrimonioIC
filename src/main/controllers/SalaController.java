@@ -6,11 +6,56 @@ import java.util.Scanner;
 import main.Main;
 import main.models.Sala;
 
-public class SalaController implements Controller {
+public class SalaController implements Controller<Sala> {
 	
 	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Sala> salas = new HashMap<Integer, Sala>();	
-	int proximoId = 0;
+	int proximoId = 0;	
+	
+	@Override
+	public void adicionar() {
+		Sala newSala = new Sala();
+		Main.blocoController.listar();
+		System.out.print("ID do Bloco: ");
+		newSala.setIdBloco(scan.nextInt());
+		
+		newSala.setId(proximoId);
+		proximoId++;
+		
+		System.out.print("Nome: ");
+		scan.nextLine();
+		newSala.setNome(scan.nextLine());
+		
+		System.out.print("Numero: ");
+		newSala.setNumero(scan.nextLine());
+		
+		salas.put(newSala.getId(), newSala);
+	}
+
+	@Override
+	public void remover(Integer id) {
+		salas.remove(id);
+	}
+
+	@Override
+	public void listar() {
+		for(int i = 0; i < salas.size(); i++){
+			System.out.println(salas.get(i).toString());
+		}
+	}
+	
+	public void listarPorBloco(Integer idBloco){
+		System.out.println("Salas: ");
+		for(int i = 0; i < salas.size(); i++){
+			if(salas.get(i).getIdBloco() == idBloco) System.out.println("  "+salas.get(i).toString());
+		}
+		System.out.println("");
+	}
+	
+	@Override
+	public Sala buscar(Integer id){
+		return salas.get(id);
+	}
 	
 	public void dadosIniciais(){
 		
@@ -41,56 +86,6 @@ public class SalaController implements Controller {
 		newSala3.setNumero("103");
 		salas.put(newSala3.getId(), newSala3);
 		
-	}
-	
-	
-	@Override
-	public void adicionar() {
-		Sala newSala = new Sala();
-		Main.blocoController.listar();
-		System.out.print("ID do Bloco: ");
-		newSala.setIdBloco(scan.nextInt());
-		
-		newSala.setId(proximoId);
-		proximoId++;
-		
-		System.out.println("Nome: ");
-		scan.nextLine();
-		newSala.setNome(scan.nextLine());
-		
-		System.out.println("Numero: ");
-		newSala.setNumero(scan.nextLine());
-		
-		salas.put(newSala.getId(), newSala);
-	}
-
-	@Override
-	public void remover(Integer id) {
-		salas.remove(id);
-	}
-
-	@Override
-	public void listar() {
-		for(int i = 0; i < salas.size(); i++){
-			System.out.println(salas.get(i).toString());
-		}
-	}
-	
-	public void listarPorBloco(Integer idBloco){
-		System.out.println("Salas: ");
-		for(int i = 0; i < salas.size(); i++){
-			if(salas.get(i).getIdBloco() == idBloco) System.out.println("  "+salas.get(i).toString());
-		}
-		System.out.println("");
-	}
-	
-	public Sala buscar(Integer id){
-		return buscar(Sala.class, id);
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends Object>T buscar(Class<T> type, Integer id) {
-		return (T) salas.get(id);
 	}
 
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 import main.Main;
 import main.models.Movimentacao;
 
-public class MovimentacaoController implements Controller {
+public class MovimentacaoController implements Controller<Movimentacao> {
 
 	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Movimentacao> movimentacoes = new HashMap<Integer, Movimentacao>();	
@@ -64,13 +64,10 @@ public class MovimentacaoController implements Controller {
 	public void listarPorPatrimonio() {
 		
 	}
-	public Movimentacao buscar(Integer id){
-		return buscar(Movimentacao.class, id);
-	}
-	@SuppressWarnings("unchecked")
+	
 	@Override
-	public <T extends Object>T buscar(Class<T> type, Integer id) {
-		return (T) movimentacoes.get(id);
+	public Movimentacao buscar(Integer id){
+		return movimentacoes.get(id);
 	}
 
 }

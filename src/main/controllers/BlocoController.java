@@ -5,11 +5,40 @@ import java.util.Scanner;
 
 import main.models.Bloco;
 
-public class BlocoController implements Controller {
+public class BlocoController implements Controller<Bloco> {
 	
 	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Bloco> blocos = new HashMap<Integer, Bloco>();
 	int proximoId = 0;
+	
+	@Override
+	public void adicionar() {
+		Bloco newBloco = new Bloco();
+		newBloco.setId(proximoId);
+		proximoId++;
+		System.out.print("Nome: ");
+		newBloco.setNome(scan.nextLine());
+		System.out.print("Numero: ");
+		newBloco.setNumero(scan.nextLine());
+		blocos.put(newBloco.getId(), newBloco);
+	}
+
+	@Override
+	public void remover(Integer id) {
+		blocos.remove(id);
+	}
+
+	@Override
+	public void listar() {
+		for(int i : blocos.keySet()){
+			System.out.println(blocos.get(i).toString());
+		}
+	}
+
+	@Override
+	public Bloco buscar(Integer id) {
+		return blocos.get(id);
+	}
 
 	public void dadosIniciais(){
 		
@@ -36,37 +65,4 @@ public class BlocoController implements Controller {
 	
 	}
 	
-	@Override
-	public void adicionar() {
-		Bloco newBloco = new Bloco();
-		newBloco.setId(proximoId);
-		proximoId++;
-		System.out.println("Nome: ");
-		newBloco.setNome(scan.nextLine());
-		System.out.println("Numero: ");
-		newBloco.setNumero(scan.nextLine());
-		blocos.put(newBloco.getId(), newBloco);
-	}
-
-	@Override
-	public void remover(Integer id) {
-		blocos.remove(id);
-	}
-
-	@Override
-	public void listar() {
-		for(int i : blocos.keySet()){
-			System.out.println(blocos.get(i).toString());
-		}
-	}
-	public Bloco buscar(Integer id){
-		return buscar(Bloco.class, id);
-	}
-	@SuppressWarnings("unchecked")
-	@Override
-	public <T extends Object>T buscar(Class<T> type, Integer id) {
-		
-		return (T) blocos.get(id);
-	}
-
 }

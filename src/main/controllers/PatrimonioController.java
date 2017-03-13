@@ -7,39 +7,34 @@ import java.util.Scanner;
 
 import main.Main;
 import main.models.Patrimonio;
+import main.models.PatrimonioConsumo;
+import main.models.PatrimonioPermanente;
 
-public class PatrimonioController implements Controller {
+public class PatrimonioController implements Controller<Patrimonio> {
 	
 	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Patrimonio> patrimonios = new HashMap<Integer, Patrimonio>();	
 	int proximoId = 0;
 	
-	public void dadosIniciais(){
-
-		Patrimonio newPatrimonio = new Patrimonio();
-		
-		newPatrimonio.setId(proximoId);
-		proximoId++;
-		
-		//Main.salaController.listarPorBloco(1); // IC
-		
-		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 2)); // LAB3
-		
-		newPatrimonio.setNome("PC1");
-		
-		newPatrimonio.setNumero("1111");
-		
-		newPatrimonio.setStatus(1);
-		
-		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
-
-	}
-	
 	@Override
 	public void adicionar() {
 		
-		Patrimonio newPatrimonio = new Patrimonio();
+		System.out.println("Tipo de Patrimonio: ");
+		System.out.println("1 - Patrimonio Permanente");
+		System.out.println("2 - Patrimonio de Consumo");
+		int tipo = scan.nextInt();
 		
+		Patrimonio newPatrimonio;
+		
+		if(tipo == 1){		
+			newPatrimonio = new PatrimonioPermanente();
+		}
+		else{
+			newPatrimonio = new PatrimonioConsumo();
+			System.out.print("ID do Responsável: ");
+			//Listar Servidores; Por Enquanto o ID do Responsável Não Faz Diferença
+			((PatrimonioConsumo) newPatrimonio).setIdResponsavel(scan.nextInt());
+		}
 		newPatrimonio.setId(proximoId);
 		Main.movimentacaoController.proximoId++;
 		proximoId++;
@@ -113,13 +108,31 @@ public class PatrimonioController implements Controller {
 			listarPorSala(i);
 		}
 	}
-	public Patrimonio buscar(Integer id){
-		return buscar(Patrimonio.class, id);
-	}
-	@SuppressWarnings("unchecked")
+
 	@Override
-	public <T extends Object>T buscar(Class<T> type, Integer id) {
-		return (T) patrimonios.get(id);
+	public Patrimonio buscar(Integer id) {
+		return patrimonios.get(id);
+	}
+	
+	public void dadosIniciais(){
+
+		Patrimonio newPatrimonio = new PatrimonioPermanente();
+		
+		newPatrimonio.setId(proximoId);
+		proximoId++;
+		
+		//Main.salaController.listarPorBloco(1); // IC
+		
+		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 2)); // LAB3
+		
+		newPatrimonio.setNome("PC1");
+		
+		newPatrimonio.setNumero("1111");
+		
+		newPatrimonio.setStatus(1);
+		
+		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
+
 	}
 
 }

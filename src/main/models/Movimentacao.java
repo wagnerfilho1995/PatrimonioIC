@@ -2,7 +2,7 @@ package main.models;
 
 import java.util.Calendar;
 import java.util.Date;
-//a decidir qual biblioteca de data vai ser usada
+
 public class Movimentacao {
 	
 	private Integer id;
@@ -39,7 +39,7 @@ public class Movimentacao {
 		if(data != null) this.data.setTime(data);
 	}
 	public String toString(){
-		return "ID: "+this.id+" | ID-Patrimonio: "+this.idPatrimonio+" | ID-Sala: "+this.idSala;
+		return "ID: "+this.id+" | ID-Patrimonio: "+this.idPatrimonio+" | ID-Sala: "+this.idSala+" | Data: "+data.get(Calendar.DAY_OF_MONTH)+"/"+(data.get(Calendar.MONTH)+1)+"/"+data.get(Calendar.YEAR);
 	}
 
 }

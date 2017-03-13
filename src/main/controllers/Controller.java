@@ -1,6 +1,6 @@
 package main.controllers;
 
-public interface Controller {
+public interface Controller <T> {
 	
 	public void adicionar();
 	
@@ -8,6 +8,6 @@ public interface Controller {
 	
 	public void listar();
 	
-	public <T extends Object>T buscar(Class<T> type, Integer id);
+	public T buscar(Integer id);
 
 }

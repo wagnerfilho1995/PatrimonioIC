@@ -1,10 +1,27 @@
 package main.models;
 
+import main.Main;
+
 public class Bloco {
 	
 	private Integer id;
 	private String nome;
 	private String numero;
+	
+	public Bloco(){
+		//Função usada para criar blocos de teste
+	}
+	
+	public Bloco(Integer id){
+		
+		Main.scan.nextLine();
+		this.setId(id);
+		System.out.print("Nome: ");
+		this.setNome(Main.scan.nextLine());
+		System.out.print("Numero: ");
+		this.setNumero(Main.scan.nextLine());
+		
+	}
 	
 	public Integer getId() {
 		return this.id;

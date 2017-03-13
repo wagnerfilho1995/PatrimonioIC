@@ -1,7 +1,11 @@
 package main.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import main.Main;
 
 public class Patrimonio {
 
@@ -12,6 +16,51 @@ public class Patrimonio {
 	private Integer status; // 1 - Padrão, 2 - Danificado / Inutilizável, 3 - Em manutenção
 	private Calendar manutencao;
 	private Integer frequenciaDeManutencao; // Em dias
+	
+	public Patrimonio(){
+		//Função usada para criar patrimonios de teste
+	}
+	
+	public Patrimonio(Integer id){
+		
+		this.setId(id);
+		Main.blocoController.listar();
+		
+		System.out.print("ID Bloco para alocação:");
+		Main.salaController.listarPorBloco(Main.scan.nextInt());
+		
+		System.out.print("ID Sala para alocação:");
+		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.scan.nextInt()));
+		
+		System.out.print("Nome: ");
+		Main.scan.nextLine();
+		this.setNome(Main.scan.nextLine());
+		
+		System.out.print("Numero: ");
+		this.setNumero(Main.scan.nextLine());
+		
+		this.setStatus(1);
+		
+		System.out.println("Tipo de Manutencao: ");
+		System.out.println("1 - Periodica");
+		System.out.println("2 - Pontual");
+		int answer = Main.scan.nextInt();
+		
+		if(answer == 1){
+			System.out.print("Frequencia(Em dias): ");
+			this.setFrequenciaDeManutencao(Main.scan.nextInt());
+			Main.scan.nextLine();
+			System.out.print("Data da proxima manutenção(dd/MM/aaaa): ");
+			String m = Main.scan.nextLine();
+			SimpleDateFormat sm = new SimpleDateFormat("dd/MM/yyyy");
+			try {
+				this.setManutencao(sm.parse(m));
+			} catch (ParseException e) {
+				System.out.println("Formato de data errado");
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public Integer getId() {
 		return id;

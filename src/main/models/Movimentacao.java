@@ -3,12 +3,44 @@ package main.models;
 import java.util.Calendar;
 import java.util.Date;
 
+import main.Main;
+
 public class Movimentacao {
 	
 	private Integer id;
 	private Integer idSala;
 	private Integer idPatrimonio;
 	private Calendar data;
+	
+	public Movimentacao(){
+		
+	}
+	
+	public Movimentacao(Integer id){
+		
+		this.setId(id);
+		
+		Main.blocoController.listar();
+		System.out.print("Bloco atual do patrimonio: ");
+		
+		Main.salaController.listarPorBloco(Main.scan.nextInt());
+		System.out.print("Sala atual do patrimonio: ");
+		
+		Main.patrimonioController.listarPorSala(Main.scan.nextInt());
+		System.out.print("Patrimonio: ");
+		
+		this.setIdPatrimonio(Main.scan.nextInt());
+		
+		Main.blocoController.listar();
+		System.out.print("Novo bloco do patrimonio: ");
+		
+		Main.salaController.listarPorBloco(Main.scan.nextInt());
+		System.out.print("Nova sala do patrimonio: ");
+		this.setIdSala(Main.scan.nextInt());
+		
+		this.setData();
+		
+	}
 	
 	public Integer getId() {
 		return id;

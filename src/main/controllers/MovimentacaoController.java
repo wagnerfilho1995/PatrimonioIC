@@ -1,43 +1,23 @@
 package main.controllers;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
-import main.Main;
 import main.models.Movimentacao;
 
 public class MovimentacaoController implements Controller<Movimentacao> {
 
-	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Movimentacao> movimentacoes = new HashMap<Integer, Movimentacao>();	
 	int proximoId = 0;
 	
 	@Override
 	public void adicionar(){
-		Main.blocoController.listar();
-		System.out.println("Bloco atual do patrimonio: ");
 		
-		Main.salaController.listarPorBloco(scan.nextInt());
-		System.out.println("Sala atual do patrimonio: ");
+		Movimentacao newMovimentacao = new Movimentacao(proximoId);
 		
-		Main.patrimonioController.listarPorSala(scan.nextInt());
-		System.out.println("Patrimonio: ");
-		
-		Movimentacao newMovimentacao = new Movimentacao();
-		newMovimentacao.setId(proximoId);
 		proximoId++;
 		
-		newMovimentacao.setIdPatrimonio(scan.nextInt());
-		
-		Main.blocoController.listar();
-		System.out.println("Novo bloco do patrimonio: ");
-		
-		Main.salaController.listarPorBloco(scan.nextInt());
-		System.out.println("Nova sala do patrimonio: ");
-		newMovimentacao.setIdSala(scan.nextInt());
-		
-		newMovimentacao.setData();
 		movimentacoes.put(newMovimentacao.getId(), newMovimentacao);
+		
 	}
 	
 	public int adicionar(Integer idPatrimonio, Integer idSala) {
@@ -50,6 +30,13 @@ public class MovimentacaoController implements Controller<Movimentacao> {
 		movimentacoes.put(newMovimentacao.getId(), newMovimentacao);
 		return newMovimentacao.getId();
 	}
+	
+	@Override
+	public void editar(Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	@Override
 	public void remover(Integer id) {
 		movimentacoes.remove(id);

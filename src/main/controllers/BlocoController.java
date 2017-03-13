@@ -1,26 +1,27 @@
 package main.controllers;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 import main.models.Bloco;
 
 public class BlocoController implements Controller<Bloco> {
 	
-	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Bloco> blocos = new HashMap<Integer, Bloco>();
 	int proximoId = 0;
 	
 	@Override
 	public void adicionar() {
-		Bloco newBloco = new Bloco();
-		newBloco.setId(proximoId);
+		Bloco newBloco = new Bloco(proximoId);
+		
 		proximoId++;
-		System.out.print("Nome: ");
-		newBloco.setNome(scan.nextLine());
-		System.out.print("Numero: ");
-		newBloco.setNumero(scan.nextLine());
+		
 		blocos.put(newBloco.getId(), newBloco);
+	}
+	
+	@Override
+	public void editar(Integer id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

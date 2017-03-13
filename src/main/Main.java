@@ -9,7 +9,7 @@ import main.controllers.SalaController;
 
 public class Main {
 
-	static Scanner scan = new Scanner(System.in);
+	public static Scanner scan = new Scanner(System.in);
 	public static PatrimonioController patrimonioController = new PatrimonioController();
 	public static SalaController salaController = new SalaController();
 	public static BlocoController blocoController = new BlocoController();

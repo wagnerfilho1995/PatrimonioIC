@@ -1,9 +1,6 @@
 package main.controllers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
-import java.util.Scanner;
 
 import main.Main;
 import main.models.Patrimonio;
@@ -12,7 +9,6 @@ import main.models.PatrimonioPermanente;
 
 public class PatrimonioController implements Controller<Patrimonio> {
 	
-	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Patrimonio> patrimonios = new HashMap<Integer, Patrimonio>();	
 	int proximoId = 0;
 	
@@ -22,61 +18,26 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		System.out.println("Tipo de Patrimonio: ");
 		System.out.println("1 - Patrimonio Permanente");
 		System.out.println("2 - Patrimonio de Consumo");
-		int tipo = scan.nextInt();
+		int tipo = Main.scan.nextInt();
 		
 		Patrimonio newPatrimonio;
 		
 		if(tipo == 1){		
-			newPatrimonio = new PatrimonioPermanente();
+			newPatrimonio = new PatrimonioPermanente(proximoId);
 		}
 		else{
-			newPatrimonio = new PatrimonioConsumo();
-			System.out.print("ID do Responsável: ");
-			//Listar Servidores; Por Enquanto o ID do Responsável Não Faz Diferença
-			((PatrimonioConsumo) newPatrimonio).setIdResponsavel(scan.nextInt());
+			newPatrimonio = new PatrimonioConsumo(proximoId);	
 		}
-		newPatrimonio.setId(proximoId);
-		Main.movimentacaoController.proximoId++;
+		
 		proximoId++;
-		Main.blocoController.listar();
-		
-		System.out.println("ID Bloco para alocação:");
-		Main.salaController.listarPorBloco(scan.nextInt());
-		
-		System.out.println("ID Sala para alocação:");
-		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), scan.nextInt()));
-		
-		System.out.println("Nome: ");
-		scan.nextLine();
-		newPatrimonio.setNome(scan.nextLine());
-		
-		System.out.println("Numero: ");
-		newPatrimonio.setNumero(scan.nextLine());
-		
-		newPatrimonio.setStatus(1);
-		
-		System.out.println("Tipo de Manutencao: ");
-		System.out.println("1 - Periodica");
-		System.out.println("2 - Pontual");
-		int answer = scan.nextInt();
-		
-		if(answer == 1){
-			System.out.println("Frequencia(Em dias): ");
-			newPatrimonio.setFrequenciaDeManutencao(scan.nextInt());
-			scan.nextLine();
-			System.out.println("Data da proxima manutenção(dd/MM/aaaa): ");
-			String m = scan.nextLine();
-			SimpleDateFormat sm = new SimpleDateFormat("dd/MM/yyyy");
-			try {
-				newPatrimonio.setManutencao(sm.parse(m));
-			} catch (ParseException e) {
-				System.out.println("Formato de data errado");
-				e.printStackTrace();
-			}
-		}
-		
 		
 		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
+	}
+	
+	@Override
+	public void editar(Integer id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -116,7 +77,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	
 	public void dadosIniciais(){
 
-		Patrimonio newPatrimonio = new PatrimonioPermanente();
+		Patrimonio newPatrimonio = new Patrimonio();
 		
 		newPatrimonio.setId(proximoId);
 		proximoId++;

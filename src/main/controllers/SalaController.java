@@ -1,35 +1,26 @@
 package main.controllers;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
-import main.Main;
 import main.models.Sala;
 
 public class SalaController implements Controller<Sala> {
 	
-	Scanner scan = new Scanner(System.in);
 	HashMap<Integer, Sala> salas = new HashMap<Integer, Sala>();	
 	int proximoId = 0;	
 	
 	@Override
 	public void adicionar() {
-		Sala newSala = new Sala();
-		Main.blocoController.listar();
-		System.out.print("ID do Bloco: ");
-		newSala.setIdBloco(scan.nextInt());
+		Sala newSala = new Sala(proximoId);
 		
-		newSala.setId(proximoId);
 		proximoId++;
 		
-		System.out.print("Nome: ");
-		scan.nextLine();
-		newSala.setNome(scan.nextLine());
-		
-		System.out.print("Numero: ");
-		newSala.setNumero(scan.nextLine());
-		
 		salas.put(newSala.getId(), newSala);
+	}
+	
+	@Override
+	public void editar(Integer id) {
+		// TODO Auto-generated method stub
 	}
 
 	@Override

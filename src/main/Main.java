@@ -128,7 +128,8 @@ public class Main {
 		System.out.println("Menu Blocos");
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
-		System.out.println("3 - Buscar");
+		System.out.println("3 - Editar");
+		System.out.println("4 - Buscar");
 		
 		int answer = scan.nextInt();
 		if(answer == 1){
@@ -138,6 +139,11 @@ public class Main {
 			blocoController.listar();
 			System.out.print("ID do Bloco: ");
 			blocoController.remover(scan.nextInt());
+		}
+		else if(answer == 3){
+			blocoController.listar();
+			System.out.print("ID do Bloco: ");
+			blocoController.editar(scan.nextInt());
 		}
 		else{
 			blocoController.listar();

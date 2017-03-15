@@ -2,6 +2,7 @@ package main.controllers;
 
 import java.util.HashMap;
 
+import main.Main;
 import main.models.Bloco;
 
 public class BlocoController implements Controller<Bloco> {
@@ -20,7 +21,21 @@ public class BlocoController implements Controller<Bloco> {
 	
 	@Override
 	public void editar(Integer id) {
-		// TODO Auto-generated method stub
+		System.out.println("O que voce deseja editar:");
+		System.out.println("1 - Nome");
+		System.out.println("2 - Numero");
+		int answer = Main.scan.nextInt();
+		Main.scan.nextLine();
+		if(answer == 1){
+			System.out.println("Nome Atual: "+buscar(id).getNome());
+			System.out.print("Novo Nome: ");
+			buscar(id).setNome(Main.scan.nextLine());
+		}
+		else{
+			System.out.println("Numero Atual: "+buscar(id).getNumero());
+			System.out.print("Novo Numero: ");
+			buscar(id).setNumero(Main.scan.nextLine());
+		}
 		
 	}
 

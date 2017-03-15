@@ -37,7 +37,35 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	@Override
 	public void editar(Integer id) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("O que voce deseja editar:");
+		System.out.println("1 - Nome");
+		System.out.println("2 - Numero");
+		System.out.println("3 - status");
+		System.out.println("4 - frequenciaDeManutencao");
+		int answer = Main.scan.nextInt();
+		Main.scan.nextLine();
+		if(answer == 1){
+			System.out.println("Nome Atual: "+buscar(id).getNome());
+			System.out.print("Novo Nome: ");
+			buscar(id).setNome(Main.scan.nextLine());
+		}
+		else if(answer == 2){
+			System.out.println("Numero Atual: "+buscar(id).getNumero());
+			System.out.print("Novo Numero: ");
+			buscar(id).setNumero(Main.scan.nextLine());
+		}
+		else if(answer == 3){
+			System.out.println("Status Atual: "+buscar(id).getStatus());
+			System.out.print("Novo status: ");
+			buscar(id).setStatus(Main.scan.nextInt());
+			Main.scan.nextLine();
+		}
+		else if(answer == 4){
+			System.out.println("Frequencia De Manutencao Atual: "+buscar(id).getFrequenciaDeManutencao());
+			System.out.print("Novo Frequencia De Manutencao: ");
+			buscar(id).setFrequenciaDeManutencao(Main.scan.nextInt());
+			Main.scan.nextLine();
+		}
 	}
 
 	@Override

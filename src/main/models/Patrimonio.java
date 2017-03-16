@@ -13,12 +13,12 @@ public class Patrimonio {
 	private String nome;
 	private String numero;
 	private Integer idMovimentacao;
-	private Integer status; // 1 - Padrï¿½o, 2 - Danificado / Inutilizï¿½vel, 3 - Em manutenï¿½ï¿½o
+	private Integer status; // 1 - Padrão, 2 - Danificado / Inutilizável, 3 - Em manutenção
 	private Calendar manutencao;
 	private Integer frequenciaDeManutencao; // Em dias
 	
 	public Patrimonio(){
-		//Funï¿½ï¿½o usada para criar patrimonios de teste
+		//Função usada para criar patrimonios de teste
 	}
 	
 	public Patrimonio(Integer id){
@@ -26,10 +26,10 @@ public class Patrimonio {
 		this.setId(id);
 		Main.blocoController.listar();
 		
-		System.out.print("ID Bloco para alocaï¿½ï¿½o:");
+		System.out.print("ID Bloco para alocação:");
 		Main.salaController.listarPorBloco(Main.scan.nextInt());
 		
-		System.out.print("ID Sala para alocaï¿½ï¿½o:");
+		System.out.print("ID Sala para alocação:");
 		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.scan.nextInt()));
 		
 		System.out.print("Nome: ");
@@ -50,7 +50,7 @@ public class Patrimonio {
 			System.out.print("Frequencia(Em dias): ");
 			this.setFrequenciaDeManutencao(Main.scan.nextInt());
 			Main.scan.nextLine();
-			System.out.print("Data da proxima manutenï¿½ï¿½o(dd/MM/aaaa): ");
+			System.out.print("Data da proxima manutenção(dd/MM/aaaa): ");
 			String m = Main.scan.nextLine();
 			SimpleDateFormat sm = new SimpleDateFormat("dd/MM/yyyy");
 			try {

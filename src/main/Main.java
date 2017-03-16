@@ -26,7 +26,7 @@ public class Main {
 		while(menuOption != 4){
 			menuOption = mainMenu();
 		}
-
+		
 	}
 	
 	public static int mainMenu(){
@@ -44,9 +44,6 @@ public class Main {
 		}
 		else if(menuOption == 3){
 			menuBloco();
-		}
-		else if(menuOption == 4){
-			movimentacaoController.listar();
 		}
 		return menuOption;
 	}

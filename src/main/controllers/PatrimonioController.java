@@ -121,6 +121,23 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		newPatrimonio.setStatus(1);
 		
 		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
+		
+		Patrimonio newPatrimonio2 = new Patrimonio();
+		
+		newPatrimonio2.setId(proximoId);
+		proximoId++;
+		
+		//Main.salaController.listarPorBloco(1); // IC
+		
+		newPatrimonio2.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 2)); // LAB3
+		
+		newPatrimonio2.setNome("ArCondicionado1");
+		
+		newPatrimonio2.setNumero("18111");
+		
+		newPatrimonio2.setStatus(1);
+		
+		patrimonios.put(newPatrimonio2.getId(), newPatrimonio2);
 
 	}
 

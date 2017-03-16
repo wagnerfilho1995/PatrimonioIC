@@ -13,8 +13,6 @@ Possuindo as seguintes funcionalidades:
 
 -> Manutenção;
 
--> Gastos;
-
 -> Remoção;
 
 -> Busca;

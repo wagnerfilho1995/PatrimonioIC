@@ -50,7 +50,7 @@ public class BlocoController implements Controller<Bloco> {
 	}
 
 	@Override
-	public void listar() {
+	public void listar(int forma) {
 		for(int i : blocos.keySet()){
 			System.out.println(blocos.get(i).toString());
 		}

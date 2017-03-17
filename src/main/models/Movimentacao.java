@@ -20,10 +20,10 @@ public class Movimentacao {
 		
 		this.setId(id);
 		
-		Main.blocoController.listar();
+		Main.blocoController.listar(0);
 		System.out.print("Bloco atual do patrimonio: ");
 		
-		Main.salaController.listarPorBloco(Main.scan.nextInt());
+		Main.salaController.listar(1);
 		System.out.print("Sala atual do patrimonio: ");
 		
 		Main.patrimonioController.listarPorSala(Main.scan.nextInt());
@@ -31,10 +31,10 @@ public class Movimentacao {
 		
 		this.setIdPatrimonio(Main.scan.nextInt());
 		
-		Main.blocoController.listar();
+		Main.blocoController.listar(0);
 		System.out.print("Novo bloco do patrimonio: ");
 		
-		Main.salaController.listarPorBloco(Main.scan.nextInt());
+		Main.salaController.listar(1);
 		System.out.print("Nova sala do patrimonio: ");
 		this.setIdSala(Main.scan.nextInt());
 		

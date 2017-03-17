@@ -24,11 +24,10 @@ public class Patrimonio {
 	public Patrimonio(Integer id){
 		
 		this.setId(id);
-		Main.blocoController.listar();
 		
-		System.out.print("ID Bloco para alocação:");
-		Main.salaController.listarPorBloco(Main.scan.nextInt());
+		Main.blocoController.listar(0);
 		
+		Main.salaController.listar(1);
 		System.out.print("ID Sala para alocação:");
 		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.scan.nextInt()));
 		
@@ -100,6 +99,7 @@ public class Patrimonio {
 	}
 	public void setManutencao(Date manutencao){
 		this.manutencao = Calendar.getInstance();
+		System.out.println(manutencao.toString());
 		this.manutencao.setTime(manutencao);
 	}
 	public Integer getFrequenciaDeManutencao() {

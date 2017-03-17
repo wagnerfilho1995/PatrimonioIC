@@ -42,7 +42,7 @@ public class MovimentacaoController implements Controller<Movimentacao> {
 		movimentacoes.remove(id);
 	}
 	@Override
-	public void listar() {
+	public void listar(int forma) {
 		for(int i = 0; i < movimentacoes.size(); i++){
 			System.out.println(movimentacoes.get(i).toString());
 		}

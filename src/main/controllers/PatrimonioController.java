@@ -43,8 +43,8 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		System.out.println("O que voce deseja editar:");
 		System.out.println("1 - Nome");
 		System.out.println("2 - Numero");
-		System.out.println("3 - status");
-		System.out.println("4 - frequenciaDeManutencao");
+		System.out.println("3 - Status");
+		System.out.println("4 - Frequencia de Manutencao");
 		int answer = Main.scan.nextInt();
 		Main.scan.nextLine();
 		if(answer == 1){
@@ -59,13 +59,13 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		}
 		else if(answer == 3){
 			System.out.println("Status Atual: "+buscar(id).getStatus());
-			System.out.print("Novo status: ");
+			System.out.print("Novo Status: ");
 			buscar(id).setStatus(Main.scan.nextInt());
 			Main.scan.nextLine();
 		}
 		else if(answer == 4){
 			System.out.println("Frequencia De Manutencao Atual: "+buscar(id).getFrequenciaDeManutencao());
-			System.out.print("Novo Frequencia De Manutencao: ");
+			System.out.print("Nova Frequencia De Manutencao: ");
 			buscar(id).setFrequenciaDeManutencao(Main.scan.nextInt());
 			Main.scan.nextLine();
 		}
@@ -78,9 +78,14 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	}
 
 	@Override
-	public void listar() { // TIRAR!!
-		for(int i = 0; i < patrimonios.size(); i++){
-			System.out.println(patrimonios.get(i).toString());
+	public void listar(int forma) { // TIRAR!!
+		for(int i : Main.salaController.salas.keySet()){
+			if(forma == 1){
+				System.out.println(Main.salaController.buscar(i).toString());
+				System.out.print("  ");
+				System.out.println("Patrimonios: ");
+			}
+			listarPorSala(i);
 		}
 	}
  	
@@ -89,17 +94,6 @@ public class PatrimonioController implements Controller<Patrimonio> {
 			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()).getIdSala() == idSala){
 				System.out.println("  " + patrimonios.get(i).toString());
 			}
-		}
-	}
-	
-	public void listarTodosPorSala(int forma){
-		for(int i : Main.salaController.salas.keySet()){
-			if(forma == 1){
-				System.out.println(Main.salaController.buscar(i).toString());
-				System.out.print("  ");
-				System.out.println("Patrimonios: ");
-			}
-			listarPorSala(i);
 		}
 	}
 

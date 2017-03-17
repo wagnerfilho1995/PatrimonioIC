@@ -32,7 +32,7 @@ public class Main {
 	}
 	
 	public static int mainMenu(){
-		System.out.println("Main Menu:");
+		System.out.println("\nMain Menu:");
 		System.out.println("1 - Patrimonio");
 		System.out.println("2 - Sala");
 		System.out.println("3 - Bloco");
@@ -55,8 +55,11 @@ public class Main {
 		System.out.println("Menu Patrimonio");
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
+		//colocar edição
 		System.out.println("3 - Buscar");
 		System.out.println("4 - Listar");
+		
+		System.out.println("\n0 - Voltar para o Menu Principal");
 	
 		int answer = scan.nextInt();
 		
@@ -64,14 +67,12 @@ public class Main {
 			patrimonioController.adicionar();
 		}
 		else if(answer == 2){
-			patrimonioController.listar();
-			System.out.print("ID do Patrimonio: ");
-			patrimonioController.remover(scan.nextInt());
+			patrimonioController.listar(2);
+			patrimonioController.remover(checarID(1));
 		}
 		else if(answer == 3){
-			patrimonioController.listar();
-			System.out.print("ID do Patrimonio: ");
-			busca = scan.nextInt();
+			patrimonioController.listar(2);
+			busca = checarID(1);
 			scan.nextLine();
 			String salaAtual = salaController.buscar(movimentacaoController.buscar(patrimonioController.buscar(busca).getIdMovimentacao()).getIdSala()).toString();					
 			System.out.println("Sala Atual do Patrimonio Buscado: "+salaAtual);
@@ -81,14 +82,9 @@ public class Main {
 			System.out.println("1 - Salas");
 			System.out.println("2 - Todos");
 			busca = scan.nextInt();
-			//if(busca == 1){
-				// rodar sala por sala, cada sala listar todos os patrimonios que tem nela
-				patrimonioController.listarTodosPorSala(busca);
-			/*}
-			else if(busca == 2){
-				patrimonioController.listar();
-			}*/
+			patrimonioController.listar(busca);
 		}
+		else if(answer == 0) return;
 	}
 	
 	public static void menuSala(){
@@ -96,41 +92,37 @@ public class Main {
 		System.out.println("Menu Salas");
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
-		System.out.println("3 - Buscar");
-		System.out.println("4 - Listar");
+		System.out.println("3 - Editar");
+		System.out.println("4 - Buscar");
+		System.out.println("5 - Listar");
+		System.out.println("\n0 - Voltar para o Menu Principal");
 		
 		int answer = scan.nextInt();
 		if(answer == 1){
 			salaController.adicionar();
 		}
 		else if(answer == 2){
-			salaController.listar();
-			System.out.print("ID da Sala: ");
-			salaController.remover(scan.nextInt());
+			salaController.listar(2);
+			salaController.remover(checarID(2));
 		}
 		else if(answer == 3){
-			salaController.listar();
+			salaController.listar(2);
 			System.out.print("ID da Sala: ");
-			salaController.buscar(scan.nextInt());
+			salaController.editar(checarID(2));
 		}
-		else{
-			
+		else if(answer == 4){
+			salaController.listar(2);
+			String blocoAtual = blocoController.buscar(salaController.buscar(checarID(2)).getIdBloco()).toString();
+			System.out.println("Bloco Atual da Sala Buscada: "+blocoAtual);
+		}
+		else if(answer == 5){
 			System.out.println("Forma de Listagem:");
 			System.out.println("1 - Blocos");
 			System.out.println("2 - Todos");
 			busca = scan.nextInt();
-			salaController.listarPorBloco(busca);
-			/*if(busca == 1){
-				blocoController.listar();
-				System.out.print("ID do Bloco: ");
-				int idBloco = scan.nextInt();
-				salaController.listarPorBloco(idBloco);
-			}
-			else if(busca == 2){
-				salaController.listarPorBloco(idBloco);
-			}
-			*/
+			salaController.listar(busca);
 		}
+		else if(answer == 0) return;
 	}
 	
 	public static void menuBloco(){
@@ -140,26 +132,64 @@ public class Main {
 		System.out.println("2 - Remover");
 		System.out.println("3 - Editar");
 		System.out.println("4 - Buscar");
-		
+		System.out.println("\n0 - Voltar para o Menu Principal");
 		int answer = scan.nextInt();
 		if(answer == 1){
 			blocoController.adicionar();
 		}
 		else if(answer == 2){
-			blocoController.listar();
+			blocoController.listar(0);
 			System.out.print("ID do Bloco: ");
-			blocoController.remover(scan.nextInt());
+			blocoController.remover(checarID(3));
 		}
 		else if(answer == 3){
-			blocoController.listar();
+			blocoController.listar(0);
 			System.out.print("ID do Bloco: ");
-			blocoController.editar(scan.nextInt());
+			blocoController.editar(checarID(3));
 		}
 		else{
-			blocoController.listar();
-			System.out.print("ID do Bloco: ");
-			blocoController.buscar(scan.nextInt());
+			blocoController.listar(0);
+			blocoController.buscar(checarID(3));
 		}
+	}
+	
+	public static int checarID(int tipo){ // 1 - Patrimonio, 2 - Sala, 3 - Bloco
+		
+		int id = 0;
+		
+		if(tipo == 1){
+			do{
+				System.out.print("ID do Patrimonio: ");
+				id = scan.nextInt();
+				if(patrimonioController.buscar(id) == null){
+					System.out.println("Inválido!");
+					System.out.println("Por favor digite um ID válido.");
+				}
+			}while(patrimonioController.buscar(id) == null);	
+		}
+		else if(tipo == 2){	
+			do{
+				System.out.print("ID da Sala: ");
+				id = scan.nextInt();
+				if(salaController.buscar(id) == null){
+					System.out.println("Inválido!");
+					System.out.println("Por favor digite um ID válido.");
+				}
+			}while(salaController.buscar(id) == null);
+		}
+		else if(tipo == 3){
+			do{
+				System.out.print("ID do Bloco: ");
+				id = scan.nextInt();
+				if(blocoController.buscar(id) == null){
+					System.out.println("Inválido!");
+					System.out.println("Por favor digite um ID válido.");
+				}
+			}while(blocoController.buscar(id) == null);
+		}
+		
+		return id;
+		
 	}
 
 }

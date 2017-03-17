@@ -17,7 +17,7 @@ public class Sala {
 		
 		this.setId(id);
 		
-		Main.blocoController.listar();
+		Main.blocoController.listar(0);
 		System.out.print("ID do Bloco: ");
 		this.setIdBloco(Main.scan.nextInt());
 		Main.scan.nextLine();

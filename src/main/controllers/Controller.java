@@ -8,7 +8,7 @@ public interface Controller <T> {
 	
 	public void remover(Integer id);
 	
-	public void listar();
+	public void listar(int forma);
 	
 	public T buscar(Integer id);
 

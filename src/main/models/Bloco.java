@@ -7,7 +7,7 @@ public class Bloco {
 	private Integer id;
 	private String nome;
 	private String numero;
-	
+	//colocar endereço
 	public Bloco(){
 		//Função usada para criar blocos de teste
 	}

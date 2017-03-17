@@ -46,7 +46,7 @@ public class SalaController implements Controller<Sala> {
 		}
 		else if(answer == 3){
 			System.out.println("Bloco Atual: "+Main.blocoController.buscar(buscar(id).getIdBloco()).toString());
-			Main.blocoController.listar();
+			Main.blocoController.listar(0);
 			System.out.println("ID do Novo Bloco: ");
 			buscar(id).setIdBloco(Main.scan.nextInt());
 			Main.scan.nextLine();
@@ -61,19 +61,13 @@ public class SalaController implements Controller<Sala> {
 	}
 
 	@Override
-	public void listar() {
-		for(int i = 0; i < salas.size(); i++){
-			System.out.println(salas.get(i).toString());
-		}
-	}
-	
-	public void listarPorBloco(int forma){
+	public void listar(int forma) {
 		
 		int idBloco = -1;
 		
 		if(forma == 1){
 	
-			Main.blocoController.listar();
+			Main.blocoController.listar(0);
 			System.out.print("ID do Bloco: ");
 			idBloco = scan.nextInt();
 			System.out.println("Bloco: " + Main.blocoController.buscar(idBloco).getNome());
@@ -85,9 +79,8 @@ public class SalaController implements Controller<Sala> {
 				System.out.println(salas.get(i).toString());
 			}
 		}
+		System.out.println();
 		
-		System.out.println("");
-			
 	}
 	
 	@Override

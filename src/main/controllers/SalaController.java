@@ -1,11 +1,14 @@
 package main.controllers;
 
 import java.util.HashMap;
+import java.util.Scanner;
 
 import main.Main;
 import main.models.Sala;
 
 public class SalaController implements Controller<Sala> {
+
+	public static Scanner scan = new Scanner(System.in);
 	
 	HashMap<Integer, Sala> salas = new HashMap<Integer, Sala>();	
 	int proximoId = 0;	
@@ -64,12 +67,27 @@ public class SalaController implements Controller<Sala> {
 		}
 	}
 	
-	public void listarPorBloco(Integer idBloco){
-		System.out.println("Salas: ");
-		for(int i = 0; i < salas.size(); i++){
-			if(salas.get(i).getIdBloco() == idBloco) System.out.println("  "+salas.get(i).toString());
+	public void listarPorBloco(int forma){
+		
+		int idBloco = -1;
+		
+		if(forma == 1){
+	
+			Main.blocoController.listar();
+			System.out.print("ID do Bloco: ");
+			idBloco = scan.nextInt();
+			System.out.println("Bloco: " + Main.blocoController.buscar(idBloco).getNome());
 		}
+		
+		for(int i : salas.keySet()){
+			if(buscar(i).getIdBloco() == idBloco || idBloco == -1){
+				System.out.print("  ");
+				System.out.println(salas.get(i).toString());
+			}
+		}
+		
 		System.out.println("");
+			
 	}
 	
 	@Override

@@ -15,6 +15,8 @@ public class Main {
 	public static BlocoController blocoController = new BlocoController();
 	public static MovimentacaoController movimentacaoController = new MovimentacaoController();
 	
+	static int busca;
+	
 	public static void main(String[] args) {
 		
 		int menuOption = 0;
@@ -57,7 +59,7 @@ public class Main {
 		System.out.println("4 - Listar");
 	
 		int answer = scan.nextInt();
-		int busca;
+		
 		if(answer == 1){
 			patrimonioController.adicionar();
 		}
@@ -95,7 +97,7 @@ public class Main {
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
 		System.out.println("3 - Buscar");
-		System.out.println("4 - Listar por Bloco");
+		System.out.println("4 - Listar");
 		
 		int answer = scan.nextInt();
 		if(answer == 1){
@@ -112,11 +114,22 @@ public class Main {
 			salaController.buscar(scan.nextInt());
 		}
 		else{
-			blocoController.listar();
-			System.out.print("ID do Bloco: ");
-			int idBloco = scan.nextInt();
-			System.out.println("Bloco: "+blocoController.buscar(idBloco).toString()+"\n");
-			salaController.listarPorBloco(idBloco);
+			
+			System.out.println("Forma de Listagem:");
+			System.out.println("1 - Blocos");
+			System.out.println("2 - Todos");
+			busca = scan.nextInt();
+			salaController.listarPorBloco(busca);
+			/*if(busca == 1){
+				blocoController.listar();
+				System.out.print("ID do Bloco: ");
+				int idBloco = scan.nextInt();
+				salaController.listarPorBloco(idBloco);
+			}
+			else if(busca == 2){
+				salaController.listarPorBloco(idBloco);
+			}
+			*/
 		}
 	}
 	

@@ -78,7 +78,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	}
 
 	@Override
-	public void listar() {
+	public void listar() { // TIRAR!!
 		for(int i = 0; i < patrimonios.size(); i++){
 			System.out.println(patrimonios.get(i).toString());
 		}
@@ -87,7 +87,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	public void listarPorSala(Integer idSala){
 		for(int i : patrimonios.keySet()){
 			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()).getIdSala() == idSala){
-				System.out.println("  "+patrimonios.get(i).toString());
+				System.out.println("  " + patrimonios.get(i).toString());
 			}
 		}
 	}

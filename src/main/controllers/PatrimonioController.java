@@ -32,6 +32,9 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		proximoId++;
 		
 		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
+
+		System.out.println("Novo Patrimônio adicionado com sucesso!");
+	
 	}
 	
 	@Override
@@ -71,6 +74,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	@Override
 	public void remover(Integer id) {
 		patrimonios.remove(id);
+		System.out.println("Patrimonio removido com sucesso!");
 	}
 
 	@Override
@@ -81,19 +85,20 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	}
  	
 	public void listarPorSala(Integer idSala){
-		System.out.println("Patrimonios: ");
 		for(int i : patrimonios.keySet()){
 			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()).getIdSala() == idSala){
 				System.out.println("  "+patrimonios.get(i).toString());
 			}
 		}
-		System.out.println("");
 	}
 	
-	public void listarTodosPorSala(){
+	public void listarTodosPorSala(int forma){
 		for(int i : Main.salaController.salas.keySet()){
-			System.out.println("Sala: "+Main.salaController.buscar(i).toString());
-			System.out.print("  ");
+			if(forma == 1){
+				System.out.println(Main.salaController.buscar(i).toString());
+				System.out.print("  ");
+				System.out.println("Patrimonios: ");
+			}
 			listarPorSala(i);
 		}
 	}
@@ -110,8 +115,6 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		newPatrimonio.setId(proximoId);
 		proximoId++;
 		
-		//Main.salaController.listarPorBloco(1); // IC
-		
 		newPatrimonio.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 2)); // LAB3
 		
 		newPatrimonio.setNome("PC1");
@@ -126,8 +129,6 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		
 		newPatrimonio2.setId(proximoId);
 		proximoId++;
-		
-		//Main.salaController.listarPorBloco(1); // IC
 		
 		newPatrimonio2.setIdMovimentacao(Main.movimentacaoController.adicionar(newPatrimonio.getId(), 2)); // LAB3
 		

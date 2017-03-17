@@ -26,7 +26,7 @@ public class Main {
 		while(menuOption != 4){
 			menuOption = mainMenu();
 		}
-		
+		System.out.println("Que a força esteja com você!");
 	}
 	
 	public static int mainMenu(){
@@ -79,13 +79,13 @@ public class Main {
 			System.out.println("1 - Salas");
 			System.out.println("2 - Todos");
 			busca = scan.nextInt();
-			if(busca == 1){
+			//if(busca == 1){
 				// rodar sala por sala, cada sala listar todos os patrimonios que tem nela
-				patrimonioController.listarTodosPorSala();
-			}
+				patrimonioController.listarTodosPorSala(busca);
+			/*}
 			else if(busca == 2){
 				patrimonioController.listar();
-			}
+			}*/
 		}
 	}
 	

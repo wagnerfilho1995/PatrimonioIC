@@ -12,11 +12,15 @@ public class BlocoController implements Controller<Bloco> {
 	
 	@Override
 	public void adicionar() {
+		
 		Bloco newBloco = new Bloco(proximoId);
 		
 		proximoId++;
 		
 		blocos.put(newBloco.getId(), newBloco);
+	
+		System.out.println("Novo Bloco adicionado com sucesso!");
+		
 	}
 	
 	@Override
@@ -42,6 +46,7 @@ public class BlocoController implements Controller<Bloco> {
 	@Override
 	public void remover(Integer id) {
 		blocos.remove(id);
+		System.out.println("Bloco removido com sucesso!");
 	}
 
 	@Override

@@ -17,6 +17,9 @@ public class SalaController implements Controller<Sala> {
 		proximoId++;
 		
 		salas.put(newSala.getId(), newSala);
+	
+		System.out.println("Nova Sala adicionada com sucesso!");
+		
 	}
 	
 	@Override
@@ -51,6 +54,7 @@ public class SalaController implements Controller<Sala> {
 	@Override
 	public void remover(Integer id) {
 		salas.remove(id);
+		System.out.println("Sala removida com sucesso!");
 	}
 
 	@Override
@@ -75,8 +79,15 @@ public class SalaController implements Controller<Sala> {
 	
 	public void dadosIniciais(){
 		
+		Sala deposito = new Sala();
+		deposito.setIdBloco(1);
+		deposito.setId(proximoId);
+		proximoId++;
+		deposito.setNome("Depósito");
+		deposito.setNumero("000");
+		salas.put(deposito.getId(), deposito);
+		
 		Sala newSala1 = new Sala();
-		//Main.blocoController.listar();
 		newSala1.setIdBloco(1);
 		newSala1.setId(proximoId);
 		proximoId++;
@@ -85,7 +96,6 @@ public class SalaController implements Controller<Sala> {
 		salas.put(newSala1.getId(), newSala1);
 	
 		Sala newSala2 = new Sala();
-		//Main.blocoController.listar();
 		newSala2.setIdBloco(1);
 		newSala2.setId(proximoId);
 		proximoId++;
@@ -94,7 +104,6 @@ public class SalaController implements Controller<Sala> {
 		salas.put(newSala2.getId(), newSala2);
 	
 		Sala newSala3 = new Sala();
-		//Main.blocoController.listar();
 		newSala3.setIdBloco(1);
 		newSala3.setId(proximoId);
 		proximoId++;

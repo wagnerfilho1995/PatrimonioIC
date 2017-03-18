@@ -28,7 +28,7 @@ public class Main {
 		while(menuOption != 4){
 			menuOption = mainMenu();
 		}
-		System.out.println("Que a força esteja com você!");
+		System.out.println("Que a forï¿½a esteja com vocï¿½!");
 	}
 	
 	public static int mainMenu(){
@@ -56,10 +56,13 @@ public class Main {
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
 		System.out.println("3 - Editar");
-		//colocar função de edição
+		//colocar funÃ§Ã£o de ediÃ§Ã£o
 		System.out.println("4 - Buscar");
 		System.out.println("5 - Listar");
-		
+		// colocar funÃ§Ã£o movimentaÃ§Ã£o
+		//System.out.println("6 - Listar MovimentaÃ§Ãµes");
+	    //System.out.println("7 - Atualizar Status de ManutenÃ§Ã£o");
+	    System.out.println("8 - Patrimonios Danificados");
 		System.out.println("\n0 - Voltar para o Menu Principal");
 	
 		int answer = scan.nextInt();
@@ -85,6 +88,9 @@ public class Main {
 			busca = scan.nextInt();
 			patrimonioController.listar(busca);
 		}
+		else if(answer == 8){
+		      patrimonioController.listarDanificados();
+		    }
 		else if(answer == 0) return;
 	}
 	
@@ -163,8 +169,8 @@ public class Main {
 				System.out.print("ID do Patrimonio: ");
 				id = scan.nextInt();
 				if(patrimonioController.buscar(id) == null){
-					System.out.println("Inválido!");
-					System.out.println("Por favor digite um ID válido.");
+					System.out.println("Invï¿½lido!");
+					System.out.println("Por favor digite um ID vï¿½lido.");
 				}
 			}while(patrimonioController.buscar(id) == null);	
 		}
@@ -173,8 +179,8 @@ public class Main {
 				System.out.print("ID da Sala: ");
 				id = scan.nextInt();
 				if(salaController.buscar(id) == null){
-					System.out.println("Inválido!");
-					System.out.println("Por favor digite um ID válido.");
+					System.out.println("Invï¿½lido!");
+					System.out.println("Por favor digite um ID vï¿½lido.");
 				}
 			}while(salaController.buscar(id) == null);
 		}
@@ -183,8 +189,8 @@ public class Main {
 				System.out.print("ID do Bloco: ");
 				id = scan.nextInt();
 				if(blocoController.buscar(id) == null){
-					System.out.println("Inválido!");
-					System.out.println("Por favor digite um ID válido.");
+					System.out.println("Invï¿½lido!");
+					System.out.println("Por favor digite um ID vï¿½lido.");
 				}
 			}while(blocoController.buscar(id) == null);
 		}

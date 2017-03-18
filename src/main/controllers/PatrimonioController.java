@@ -33,7 +33,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		
 		patrimonios.put(newPatrimonio.getId(), newPatrimonio);
 
-		System.out.println("Novo Patrimônio adicionado com sucesso!");
+		System.out.println("Novo Patrimï¿½nio adicionado com sucesso!");
 	
 	}
 	
@@ -102,6 +102,38 @@ public class PatrimonioController implements Controller<Patrimonio> {
 		return patrimonios.get(id);
 	}
 	
+	
+	public void atualizarStatus(Integer id){
+		
+		Patrimonio patrimonio = buscar(id);
+		if(patrimonio.getStatus() == 1){
+			buscar(id).setStatus(2);
+		}
+		else if(patrimonio.getStatus() == 2){
+			buscar(id).setStatus(3);
+		}
+		else if(patrimonio.getStatus() == 3){
+			buscar(id).setStatus(1);
+		}
+	}
+	
+	public void listarDanificados(){
+		int contador = 0;
+		
+		for(int i : patrimonios.keySet()){
+			
+			if(buscar(i).getStatus() == 2){
+				System.out.println("  "+patrimonios.get(i).toString());
+				contador = 1;
+			}
+			
+		}
+		if(contador == 0) System.out.println("Nenhum encontrado");
+		
+		System.out.println("");
+				
+				
+	}
 	public void dadosIniciais(){
 
 		Patrimonio newPatrimonio = new Patrimonio();

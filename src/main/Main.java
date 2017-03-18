@@ -55,9 +55,10 @@ public class Main {
 		System.out.println("Menu Patrimonio");
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
-		//colocar edição
-		System.out.println("3 - Buscar");
-		System.out.println("4 - Listar");
+		System.out.println("3 - Editar");
+		//colocar função de edição
+		System.out.println("4 - Buscar");
+		System.out.println("5 - Listar");
 		
 		System.out.println("\n0 - Voltar para o Menu Principal");
 	
@@ -70,14 +71,14 @@ public class Main {
 			patrimonioController.listar(2);
 			patrimonioController.remover(checarID(1));
 		}
-		else if(answer == 3){
+		else if(answer == 4){
 			patrimonioController.listar(2);
 			busca = checarID(1);
 			scan.nextLine();
 			String salaAtual = salaController.buscar(movimentacaoController.buscar(patrimonioController.buscar(busca).getIdMovimentacao()).getIdSala()).toString();					
 			System.out.println("Sala Atual do Patrimonio Buscado: "+salaAtual);
 		}	
-		else if(answer == 4){
+		else if(answer == 5){
 			System.out.println("Forma de Listagem:");
 			System.out.println("1 - Salas");
 			System.out.println("2 - Todos");

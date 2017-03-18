@@ -89,15 +89,11 @@ public class Main {
 			patrimonioController.listar(busca);
 		}
 		else if(answer == 7){
-			//patrimonioController.listar();
-		    System.out.print("ID do Patrimonio: ");
-		    busca = scan.nextInt();
-		    busca = checarID(busca);
-		    patrimonioController.atualizarStatus(busca);
-			
+			busca = checarID(1);
+		    patrimonioController.atualizarStatus(busca);			
 		}
 		else if(answer == 8){
-		      patrimonioController.listarDanificados();
+		    patrimonioController.listarDanificados();		      
 		    }
 		else if(answer == 0) return;
 	}

@@ -60,8 +60,8 @@ public class Main {
 		System.out.println("4 - Buscar");
 		System.out.println("5 - Listar");
 		// colocar função movimentação
-		//System.out.println("6 - Listar Movimentações");
-	    //System.out.println("7 - Atualizar Status de Manutenção");
+		//System.out.println("6 -  Movimentações");
+	    System.out.println("7 - Atualizar Status de Manutenção");
 	    System.out.println("8 - Patrimonios Danificados");
 		System.out.println("\n0 - Voltar para o Menu Principal");
 	
@@ -87,6 +87,14 @@ public class Main {
 			System.out.println("2 - Todos");
 			busca = scan.nextInt();
 			patrimonioController.listar(busca);
+		}
+		else if(answer == 7){
+			//patrimonioController.listar();
+		    System.out.print("ID do Patrimonio: ");
+		    busca = scan.nextInt();
+		    busca = checarID(busca);
+		    patrimonioController.atualizarStatus(busca);
+			
 		}
 		else if(answer == 8){
 		      patrimonioController.listarDanificados();

@@ -61,8 +61,8 @@ public class Main {
 		System.out.println("5 - Listar");
 		// colocar função movimentação
 		//System.out.println("6 -  Movimentações");
-	    System.out.println("7 - Atualizar Status de Manutenção");
-	    System.out.println("8 - Patrimonios Danificados");
+	    	System.out.println("7 - Atualizar Status de Manutenção");
+	    	System.out.println("8 - Patrimonios Danificados");
 		System.out.println("\n0 - Voltar para o Menu Principal");
 	
 		int answer = scan.nextInt();
@@ -94,7 +94,7 @@ public class Main {
 		}
 		else if(answer == 8){
 		    patrimonioController.listarDanificados();		      
-		    }
+		}
 		else if(answer == 0) return;
 	}
 	

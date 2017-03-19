@@ -27,11 +27,10 @@ public class SalaController implements Controller<Sala> {
 	
 	@Override
 	public void editar(Integer id) {
-		// TODO Auto-generated method stub, what about idbloco?
 		System.out.println("O que voce deseja editar:");
 		System.out.println("1 - Nome");
 		System.out.println("2 - Numero");
-		System.out.println("3 - idBloco");
+		System.out.println("3 - Bloco");
 		int answer = Main.scan.nextInt();
 		Main.scan.nextLine();
 		if(answer == 1){
@@ -45,10 +44,11 @@ public class SalaController implements Controller<Sala> {
 			buscar(id).setNumero(Main.scan.nextLine());
 		}
 		else if(answer == 3){
-			System.out.println("Bloco Atual: "+Main.blocoController.buscar(buscar(id).getIdBloco()).toString());
+			System.out.println("Bloco Atual: "+Main.blocoController.buscar(buscar(id).getIdBloco()).toString()+"\n");
+			System.out.println("Definir Novo Bloco: ");
 			Main.blocoController.listar(0);
-			System.out.println("ID do Novo Bloco: ");
-			buscar(id).setIdBloco(Main.scan.nextInt());
+			System.out.println();
+			buscar(id).setIdBloco(Main.checarID(3));
 			Main.scan.nextLine();
 			
 		}
@@ -69,7 +69,7 @@ public class SalaController implements Controller<Sala> {
 	
 			Main.blocoController.listar(0);
 			System.out.print("ID do Bloco: ");
-			idBloco = scan.nextInt();
+			idBloco = Main.checarID(3);
 			System.out.println("Bloco: " + Main.blocoController.buscar(idBloco).getNome());
 		}
 		

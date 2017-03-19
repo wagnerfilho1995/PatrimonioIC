@@ -2,6 +2,7 @@ package main.controllers;
 
 import java.util.HashMap;
 
+import main.Main;
 import main.models.Movimentacao;
 
 public class MovimentacaoController implements Controller<Movimentacao> {
@@ -13,7 +14,7 @@ public class MovimentacaoController implements Controller<Movimentacao> {
 	public void adicionar(){
 		
 		Movimentacao newMovimentacao = new Movimentacao(proximoId);
-		
+		Main.patrimonioController.buscar(newMovimentacao.getIdPatrimonio()).setIdMovimentacao(proximoId);
 		proximoId++;
 		
 		movimentacoes.put(newMovimentacao.getId(), newMovimentacao);
@@ -43,13 +44,15 @@ public class MovimentacaoController implements Controller<Movimentacao> {
 	}
 	@Override
 	public void listar(int forma) {
-		for(int i = 0; i < movimentacoes.size(); i++){
-			System.out.println(movimentacoes.get(i).toString());
+		for(int i : movimentacoes.keySet()){
+			System.out.println(buscar(i).toString());
 		}
 	}
 	
-	public void listarPorPatrimonio() {
-		
+	public void listarPorPatrimonio(Integer idPatrimonio) {
+		for(int i : movimentacoes.keySet()){
+			if(buscar(i).getIdPatrimonio() == idPatrimonio) System.out.println(buscar(i).toString());
+		}
 	}
 	
 	@Override

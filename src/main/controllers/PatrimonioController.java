@@ -39,12 +39,11 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	
 	@Override
 	public void editar(Integer id) {
-		// TODO Auto-generated method stub
 		System.out.println("O que voce deseja editar:");
 		System.out.println("1 - Nome");
 		System.out.println("2 - Numero");
 		System.out.println("3 - Status");
-		System.out.println("4 - Frequencia de Manutencao");
+		System.out.println("4 - Frequencia de Manutenção");
 		int answer = Main.scan.nextInt();
 		Main.scan.nextLine();
 		if(answer == 1){
@@ -78,7 +77,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	}
 
 	@Override
-	public void listar(int forma) { // TIRAR!!
+	public void listar(int forma) {
 		for(int i : Main.salaController.salas.keySet()){
 			if(forma == 1){
 				System.out.println(Main.salaController.buscar(i).toString());
@@ -90,11 +89,15 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	}
  	
 	public void listarPorSala(Integer idSala){
+		int j = 0;
 		for(int i : patrimonios.keySet()){
 			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()).getIdSala() == idSala){
 				System.out.println("  " + patrimonios.get(i).toString());
+				j = 1;
 			}
 		}
+		if(j == 0) System.out.println("  Nenhum");
+		System.out.println();
 	}
 
 	@Override

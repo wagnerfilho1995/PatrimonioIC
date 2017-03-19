@@ -28,7 +28,7 @@ public class Main {
 		while(menuOption != 4){
 			menuOption = mainMenu();
 		}
-		System.out.println("Que a forï¿½a esteja com vocï¿½!");
+		System.out.println("Que a força esteja com você!");
 	}
 	
 	public static int mainMenu(){
@@ -56,13 +56,11 @@ public class Main {
 		System.out.println("1 - Adicionar");
 		System.out.println("2 - Remover");
 		System.out.println("3 - Editar");
-		//colocar funÃ§Ã£o de ediÃ§Ã£o
 		System.out.println("4 - Buscar");
 		System.out.println("5 - Listar");
-		// colocar funÃ§Ã£o movimentaÃ§Ã£o
-		//System.out.println("6 -  MovimentaÃ§Ãµes");
-	    	System.out.println("7 - Atualizar Status de ManutenÃ§Ã£o");
-	    	System.out.println("8 - Patrimonios Danificados");
+		System.out.println("6 - Movimentações");
+		System.out.println("7 - Atualizar Status de Manutenção");
+		System.out.println("8 - Patrimonios Danificados");
 		System.out.println("\n0 - Voltar para o Menu Principal");
 	
 		int answer = scan.nextInt();
@@ -73,6 +71,9 @@ public class Main {
 		else if(answer == 2){
 			patrimonioController.listar(2);
 			patrimonioController.remover(checarID(1));
+		}
+		else if(answer == 3){
+			patrimonioController.editar(checarID(1));
 		}
 		else if(answer == 4){
 			patrimonioController.listar(2);
@@ -88,9 +89,24 @@ public class Main {
 			busca = scan.nextInt();
 			patrimonioController.listar(busca);
 		}
+		else if(answer == 6){
+			System.out.println("Menu Movimentações");
+			System.out.println("1 - Movimentar Patrimonio");
+			System.out.println("2 - Listar Todas");
+			System.out.println("3 - Listar por Patrimonio");
+			busca = scan.nextInt();
+			if(busca == 1){
+				movimentacaoController.adicionar();
+			}
+			else if(busca == 2){
+				movimentacaoController.listar(0);
+			}
+			else if(busca == 3){
+				movimentacaoController.listarPorPatrimonio(checarID(1));
+			}
+		}
 		else if(answer == 7){
-			busca = checarID(1);
-		    patrimonioController.atualizarStatus(busca);			
+		    patrimonioController.atualizarStatus(checarID(1));			
 		}
 		else if(answer == 8){
 		    patrimonioController.listarDanificados();		      
@@ -118,7 +134,6 @@ public class Main {
 		}
 		else if(answer == 3){
 			salaController.listar(2);
-			System.out.print("ID da Sala: ");
 			salaController.editar(checarID(2));
 		}
 		else if(answer == 4){
@@ -150,18 +165,17 @@ public class Main {
 		}
 		else if(answer == 2){
 			blocoController.listar(0);
-			System.out.print("ID do Bloco: ");
 			blocoController.remover(checarID(3));
 		}
 		else if(answer == 3){
 			blocoController.listar(0);
-			System.out.print("ID do Bloco: ");
 			blocoController.editar(checarID(3));
 		}
-		else{
+		else if(answer == 4){
 			blocoController.listar(0);
 			blocoController.buscar(checarID(3));
 		}
+		else if(answer == 0) return;
 	}
 	
 	public static int checarID(int tipo){ // 1 - Patrimonio, 2 - Sala, 3 - Bloco
@@ -173,8 +187,8 @@ public class Main {
 				System.out.print("ID do Patrimonio: ");
 				id = scan.nextInt();
 				if(patrimonioController.buscar(id) == null){
-					System.out.println("Invï¿½lido!");
-					System.out.println("Por favor digite um ID vï¿½lido.");
+					System.out.println("Inválido!");
+					System.out.println("Por favor digite um ID válido.");
 				}
 			}while(patrimonioController.buscar(id) == null);	
 		}
@@ -183,8 +197,8 @@ public class Main {
 				System.out.print("ID da Sala: ");
 				id = scan.nextInt();
 				if(salaController.buscar(id) == null){
-					System.out.println("Invï¿½lido!");
-					System.out.println("Por favor digite um ID vï¿½lido.");
+					System.out.println("Inválido!");
+					System.out.println("Por favor digite um ID válido.");
 				}
 			}while(salaController.buscar(id) == null);
 		}
@@ -193,8 +207,8 @@ public class Main {
 				System.out.print("ID do Bloco: ");
 				id = scan.nextInt();
 				if(blocoController.buscar(id) == null){
-					System.out.println("Invï¿½lido!");
-					System.out.println("Por favor digite um ID vï¿½lido.");
+					System.out.println("Inválido!");
+					System.out.println("Por favor digite um ID válido.");
 				}
 			}while(blocoController.buscar(id) == null);
 		}

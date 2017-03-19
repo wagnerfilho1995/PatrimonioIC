@@ -173,7 +173,7 @@ public class Main {
 		}
 		else if(answer == 4){
 			blocoController.listar(0);
-			blocoController.buscar(checarID(3));
+			System.out.println(blocoController.buscar(checarID(3)).getEndereco());
 		}
 		else if(answer == 0) return;
 	}

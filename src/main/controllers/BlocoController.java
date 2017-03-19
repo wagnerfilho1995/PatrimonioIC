@@ -68,6 +68,7 @@ public class BlocoController implements Controller<Bloco> {
 		proximoId++;
 		newBloco1.setNome("Antigo IM");
 		newBloco1.setNumero("14");
+		newBloco1.setEndereco("UFAL - Rua Principal, próximo a Praça das Mãos.");
 		blocos.put(newBloco1.getId(), newBloco1);
 	
 		Bloco newBloco2 = new Bloco();
@@ -75,6 +76,7 @@ public class BlocoController implements Controller<Bloco> {
 		proximoId++;
 		newBloco2.setNome("IC");
 		newBloco2.setNumero("17");
+		newBloco2.setEndereco("UFAL - Rua secundária, atrás do CIC.");
 		blocos.put(newBloco2.getId(), newBloco2);
 	
 		Bloco newBloco3 = new Bloco();
@@ -82,6 +84,7 @@ public class BlocoController implements Controller<Bloco> {
 		proximoId++;
 		newBloco3.setNome("CPTEC");
 		newBloco3.setNumero("18");
+		newBloco3.setEndereco("UFAL - Rua secundária, atrás do IC.");
 		blocos.put(newBloco3.getId(), newBloco3);
 	
 	}

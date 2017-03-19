@@ -25,8 +25,6 @@ public class Patrimonio {
 		
 		this.setId(id);
 		
-		Main.blocoController.listar(0);
-		
 		Main.salaController.listar(1);
 		System.out.print("ID Sala para alocação:");
 		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.scan.nextInt()));

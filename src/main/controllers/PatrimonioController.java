@@ -84,11 +84,11 @@ public class PatrimonioController implements Controller<Patrimonio> {
 				System.out.print("  ");
 				System.out.println("Patrimonios: ");
 			}
-			listarPorSala(i);
+			listarPorSala(i, forma);
 		}
 	}
  	
-	public void listarPorSala(Integer idSala){
+	public void listarPorSala(Integer idSala, int forma){
 		int j = 0;
 		for(int i : patrimonios.keySet()){
 			if(Main.movimentacaoController.buscar(patrimonios.get(i).getIdMovimentacao()).getIdSala() == idSala){
@@ -96,8 +96,7 @@ public class PatrimonioController implements Controller<Patrimonio> {
 				j = 1;
 			}
 		}
-		if(j == 0) System.out.println("  Nenhum");
-		System.out.println();
+		if(j == 0 && forma == 1) System.out.println("  Nenhum\n");
 	}
 
 	@Override

@@ -7,11 +7,8 @@ import java.util.Date;
 
 import main.Main;
 
-public class Patrimonio {
+public class Patrimonio extends InformacoesBasicas {
 	
-	private Integer id;
-	private String nome;
-	private String numero;
 	private Integer idMovimentacao;
 	private Integer status; // 1 - Padrão, 2 - Danificado / Inutilizável, 3 - Em manutenção
 	private Calendar manutencao;
@@ -27,10 +24,9 @@ public class Patrimonio {
 		
 		Main.salaController.listar(1);
 		System.out.print("ID Sala para alocação:");
-		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.scan.nextInt()));
+		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.checarID(2)));
 		
 		System.out.print("Nome: ");
-		Main.scan.nextLine();
 		this.setNome(Main.scan.nextLine());
 		
 		System.out.print("Numero: ");
@@ -59,24 +55,6 @@ public class Patrimonio {
 		}
 	}
 	
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getNumero() {
-		return numero;
-	}
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
 	public Integer getIdMovimentacao() {
 		return idMovimentacao;
 	}
@@ -105,9 +83,6 @@ public class Patrimonio {
 	}
 	public void setFrequenciaDeManutencao(Integer frequenciaDeManutencao) {
 		this.frequenciaDeManutencao = frequenciaDeManutencao;
-	}
-	public String toString(){
-		return "ID: "+this.id+" | Nome: "+this.nome+" | Numero: "+this.numero;
 	}
 	
 }

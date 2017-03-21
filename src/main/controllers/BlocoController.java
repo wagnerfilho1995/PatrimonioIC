@@ -28,6 +28,7 @@ public class BlocoController implements Controller<Bloco> {
 		System.out.println("O que voce deseja editar:");
 		System.out.println("1 - Nome");
 		System.out.println("2 - Numero");
+		System.out.println("3 - Endereco");
 		int answer = Main.scan.nextInt();
 		Main.scan.nextLine();
 		if(answer == 1){
@@ -35,12 +36,16 @@ public class BlocoController implements Controller<Bloco> {
 			System.out.print("Novo Nome: ");
 			buscar(id).setNome(Main.scan.nextLine());
 		}
-		else{
+		else if(answer == 2){
 			System.out.println("Numero Atual: "+buscar(id).getNumero());
 			System.out.print("Novo Numero: ");
 			buscar(id).setNumero(Main.scan.nextLine());
 		}
-		
+		else if(answer == 3){
+			System.out.println("Endereco Atual: "+buscar(id).getEndereco());
+			System.out.print("Novo Endereco: ");
+			buscar(id).setEndereco(Main.scan.nextLine());
+		}
 	}
 
 	@Override

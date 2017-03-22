@@ -23,7 +23,6 @@ public class Patrimonio extends InformacoesBasicas {
 		this.setId(id);
 		
 		Main.salaController.listar(1);
-		System.out.print("ID Sala para alocação:");
 		this.setIdMovimentacao(Main.movimentacaoController.adicionar(this.getId(), Main.checarID(2)));
 		
 		System.out.print("Nome: ");
@@ -75,8 +74,16 @@ public class Patrimonio extends InformacoesBasicas {
 	}
 	public void setManutencao(Date manutencao){
 		this.manutencao = Calendar.getInstance();
-		System.out.println(manutencao.toString());
 		this.manutencao.setTime(manutencao);
+	}
+	public boolean checarManutencao(){
+		Calendar hoje = Calendar.getInstance();
+		if(manutencao.get(Calendar.DATE) == hoje.get(Calendar.DATE) && manutencao.get(Calendar.MONTH) == hoje.get(Calendar.MONTH) && manutencao.get(Calendar.YEAR) == hoje.get(Calendar.YEAR)){
+			return true;	
+		}
+		
+				
+		return false;  
 	}
 	public Integer getFrequenciaDeManutencao() {
 		return frequenciaDeManutencao;

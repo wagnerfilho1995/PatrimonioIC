@@ -121,11 +121,13 @@ public class PatrimonioController implements Controller<Patrimonio> {
 	
 	public void listarDanificados(){
 		int contador = 0;
-		
 		for(int i : patrimonios.keySet()){
-			
+			if(buscar(i).getManutencao() != null && buscar(i).checarManutencao()){
+				atualizarStatus(i);
+				buscar(i).setManutecao();
+			}
 			if(buscar(i).getStatus() == 2){
-				System.out.println("  "+patrimonios.get(i).toString());
+				System.out.println(patrimonios.get(i).toString());
 				contador = 1;
 			}
 			

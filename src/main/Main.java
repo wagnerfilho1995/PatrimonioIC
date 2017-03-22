@@ -212,7 +212,7 @@ public class Main {
 				}
 			}while(blocoController.buscar(id) == null);
 		}
-		
+		scan.nextLine();
 		return id;
 		
 	}

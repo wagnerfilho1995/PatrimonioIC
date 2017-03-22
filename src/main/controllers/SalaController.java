@@ -68,8 +68,9 @@ public class SalaController implements Controller<Sala> {
 		if(forma == 1){
 	
 			Main.blocoController.listar(0);
-			System.out.print("ID do Bloco: ");
-			idBloco = Main.checarID(3);
+			
+			do idBloco = Main.checarID(3); while(!contemSalas(idBloco));
+			
 			System.out.println("Bloco: " + Main.blocoController.buscar(idBloco).getNome());
 		}
 		
@@ -80,6 +81,18 @@ public class SalaController implements Controller<Sala> {
 			}
 		}
 		System.out.println();
+		
+	}
+	
+	public boolean contemSalas(int idBloco) {
+		
+		for(int i : salas.keySet()){
+			if(buscar(i).getIdBloco() == idBloco){
+				return true;
+			}
+		}
+		System.out.println("Bloco não contém salas");
+		return false;
 		
 	}
 	

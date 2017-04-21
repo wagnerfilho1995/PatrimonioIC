@@ -81,7 +81,6 @@ public class Patrimonio extends InformacoesBasicas {
 		if(manutencao.get(Calendar.DATE) == hoje.get(Calendar.DATE) && manutencao.get(Calendar.MONTH) == hoje.get(Calendar.MONTH) && manutencao.get(Calendar.YEAR) == hoje.get(Calendar.YEAR)){
 			return true;	
 		}
-		
 				
 		return false;  
 	}
